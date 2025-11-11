@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.adventure.RiverTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.766 s - in org.adventure.RiverTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.756 s - in org.adventure.RiverTest
