@@ -16,3 +16,40 @@ Core decisions (initial):
 
 Process:
 - When a design decision is changed, increment the decision version and note affected docs/files.
+
+## Canonical Defaults (practical values)
+
+The following values are pragmatic defaults (also summarized in `docs/specs_summary.md`) intended to be the authoritative starting point for implementations and ops. If you change one of these, increment a decision version and update this file.
+
+- Tick-driven defaults:
+	- Default tick length: 1s
+	- activeTickRateMultiplier = 1.0
+	- backgroundTickRateMultiplier = 1/60
+
+- Persistence & migration:
+	- Persisted objects MUST include `type` (module/ObjectName), `schemaVersion` (int), and `lastProcessedTick` where applicable.
+	- Default backup retention: keep last 5 snapshots.
+
+- Ownership & economy defaults:
+	- taxRate = 0.05 (5%)
+	- tax cadence: weekly (every 7 in-game days)
+	- gracePeriod = 14 in-game days
+	- seizureThreshold = 21 in-game days after grace period
+	- contestedExpiryTicks = 7200 (approx. 2 hours at 1s ticks)
+
+- Event propagation:
+	- Default decay: exponential with k = 0.8
+	- default maxHops = 6
+	- maxActiveStoriesPerRegion = 50
+	- maxActiveEventsPerRegion = 20
+
+- Mod sandboxing (post-MVP):
+	- CPU per invocation: 50 ms
+	- Wall time per script run: 200 ms
+	- Memory: 16 MB
+
+- Testing defaults:
+	- Recommended initial stack: Java + JUnit 5 + Mockito (repository contains `App.java`)
+	- Deterministic-seed tests for generation: compare checksums for plate map, elevation, and river graph
+
+These are starting defaults to be tuned. Move major changes through the design decision process and mark the change here.

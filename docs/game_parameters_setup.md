@@ -42,6 +42,55 @@ Configurable parameters for world creation and game setup.
 - Presets can be created, saved, and selected by users
 - Presets include recommended values and descriptions
 
+## Canonical Defaults & Presets
+
+The following presets provide example values that map to `docs/specs_summary.md` canonical defaults. These are suggested starting presets — server operators can override per-deployment.
+
+- Global canonical defaults (operator-configurable):
+	- `tickLengthSeconds`: 1
+	- `activeTickRateMultiplier`: 1.0
+	- `backgroundTickRateMultiplier`: 1/60
+	- `maxActiveRegionsPerServer`: 100 (initial estimate — requires profiling)
+	- `taxRate`: 0.05
+	- `gracePeriodDays`: 14
+	- `seizureThresholdDays`: 21
+
+- Preset: Classic Fantasy (recommended for first playtests)
+	- worldSize: medium (512x512)
+	- altitudeLayers: 4
+	- lethality: medium
+	- resourceAbundance: normal
+	- magicLevel: normal
+	- npcDensity: medium
+	- eventFrequency: normal
+
+- Preset: High Lethality
+	- worldSize: medium
+	- lethality: high
+	- resourceAbundance: normal
+	- npcDensity: medium-high
+	- eventFrequency: high
+
+- Preset: Resource Rich
+	- resourceAbundance: high
+	- npcDensity: low
+	- eventFrequency: low
+
+- Preset: Magic Overload
+	- magicLevel: high
+	- numberOfMagicZones: increased
+	- resourceAbundance: normal
+
+- Preset: Peaceful Exploration
+	- lethality: low
+	- npcDensity: low
+	- eventFrequency: low
+	- resourceAbundance: normal
+
+Notes:
+- Expose only safe parameters to players (e.g., worldSize, preset choice, starting resources). Keep operator-sensitive parameters (tick rates, maxActiveRegions, server caps) as operator-only settings or server-side overrides.
+- Update UI to present preset descriptions and warn when a chosen preset may conflict with server caps.
+
 ## Parameter Validation & Conflict Resolution
 - Automatic checks for invalid or conflicting parameter combinations
 - Warnings and suggestions for corrections

@@ -1,48 +1,113 @@
-# !Adventure Game Project
+# !Adventure — Living World RPG (documentation + developer guide)
 
-## Getting Started
+Welcome to !Adventure — a modular, text-based, multiplayer RPG with procedural world generation, dynamic societies, and emergent storytelling. This repository contains the design docs, reference implementations, and tools to build and run the project.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This README gives a concise orientation for contributors and operators: where to find design docs, how to run the minimal Java app, development workflows, testing guidance, and where to triage outstanding design decisions.
 
-## Folder Structure
+## Quick links
 
-The workspace contains two folders by default, where:
+- Docs: `docs/` (detailed design documents and decisions)
+- High-level tracker: `docs/TO_FIX.md` (implementation tracker)
+- Canonical decisions: `docs/design_decisions.md`
+- Specs & defaults: `docs/specs_summary.md`
+- Open questions / triage: `docs/open_questions.md`
+- Operator runbook: `docs/operator_runbook.md`
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Repo layout
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- `src/` — Java source (prototype entry points)
+- `lib/` — third-party jars or libraries used by local dev builds
+- `docs/` — all design documents and operator guides (primary source of truth)
+- `README.md` — this file
+- `App.java` — small runnable entry (example / prototype)
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+If you need a full IDE layout for VS Code, use the existing `.vscode` settings or generate one for your environment.
 
-## Dependency Management
+## Running the quick prototype (Java)
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+This repo contains `App.java` as a minimal entry point. The project is intentionally light-weight; pick your preferred Java toolchain (javac/java, Maven, or Gradle).
 
-## Documentation Structure
+Example: compile & run with plain Java (Windows PowerShell):
 
-All game design documentation is located in the `docs` folder. Each core feature has its own detailed file, following a unified template for consistency and future expansion.
+```powershell
+# from repo root
+javac -d bin -sourcepath src src\App.java
+java -cp bin App
+```
 
-### Documentation Template
-See `docs/TEMPLATE.md` for the standard format used in all feature docs.
+If you prefer Maven/Gradle, create `pom.xml` or `build.gradle` and wire dependencies. The docs and tests expect a Java toolchain by default.
 
-### Feature Documentation Files
-- `world_generation.md`: World creation, tectonic plates, elevation, temperature, water bodies, regional features
-- `biomes_geography.md`: Biome types, resources, hazards, transitions, micro-biomes
-- `societies_clans_kingdoms.md`: Clans, kingdoms, relationships, diplomacy, loyalty
-- `structures_ownership.md`: Buildings, rooms, upgrades, ownership, legacy effects
-- `objects_crafting_legacy.md`: Items, crafting, magic, durability, legacy/story system
-- `characters_stats_traits_skills.md`: Playable/NPC races, stats, traits, skills, bestiary
-- `stories_events.md`: Story creation, event triggers, lore, local impact
-- `game_parameters_setup.md`: Worldgen parameters, presets, debug mode, modularity
+## Documentation structure (high-level)
 
-Each file contains:
-- Overview
-- Core Concepts
-- Data Structures & Relationships
-- Generation & Initialization
-- Interactions & Edge Cases
-- Expansion & Modularity
-- Open Questions
+All design artifacts live in `docs/`. Key files:
 
-Expand or update any section as the project evolves. Suggestions and unresolved questions are included for ongoing development.
+- `docs/design_decisions.md` — centralized, authoritative decisions
+- `docs/specs_summary.md` — actionable defaults and short contracts (tick rates, tax defaults, event decay, mod sandbox caps)
+- `docs/open_questions.md` — triaged open questions with owners
+- `docs/TO_FIX.md` — implementation tracker
+- Feature docs (each gives specification, data models, algorithms, edge cases):
+	- `world_generation.md`
+	- `biomes_geography.md`
+	- `structures_ownership.md`
+	- `objects_crafting_legacy.md`
+	- `characters_stats_traits_skills.md`
+	- `societies_clans_kingdoms.md`
+	- `stories_events.md`
+	- `economy_resources.md`
+	- `persistence_versioning.md`
+
+If you change any design, update `docs/design_decisions.md` and add a short note linking to affected files.
+
+## Development workflow
+
+1. Pick a feature or issue from `docs/TO_FIX.md` or `docs/open_questions.md`.
+2. Create a branch `feature/<short-description>`.
+3. Implement the prototype in `src/` and add or update docs in `docs/`.
+4. Add tests (deterministic-seed tests for procedural generation are required) and run locally.
+5. Open a PR with design notes and a short playtest plan.
+
+Use the `docs/TEMPLATE.md` when adding or editing feature docs to keep format consistent.
+
+## Testing guidance
+
+- Deterministic-seed tests: every procedural generator must accept an explicit seed and pass a checksum equality test when run twice with the same seed.
+- Recommended test stack: Java + JUnit 5 + Mockito for unit tests. Integration tests may use TestContainers.
+- Coverage goals: 70% unit coverage for core modules, 85%+ for persistence and critical logic.
+
+I can add a test scaffold and CI workflow on request.
+
+## Operator notes
+
+See `docs/operator_runbook.md` for recovery, migration, and backup procedures. `docs/specs_summary.md` contains canonical defaults for operators.
+
+## Contributing
+
+We welcome contributions. Please:
+
+1. Open an issue for non-trivial proposals before large changes.
+2. Follow the repo's coding style and document design changes in `docs/design_decisions.md`.
+3. Include deterministic tests for procedural systems when applicable.
+
+## Contact & governance
+
+For now, file issues and PRs on the repository. If you'd like, we can add a CONTRIBUTORS.md and a code of conduct.
+
+## Next steps I can help with
+
+- Add a Java test scaffold + CI
+- Inline canonical defaults into feature docs (structures, economy)
+- Add a developer quickstart script to automate build/run/test
+
+Tell me which of the above you'd like me to do next and I'll apply patches.
+
+## Recent documentation & operator additions
+
+I added a few pragmatic documents and defaults to unblock implementation and operations. See:
+
+- `docs/specs_summary.md` — canonical defaults and short contracts (tick defaults, event decay, tax defaults, mod sandbox caps, persistence recommendations).
+- `docs/operator_runbook.md` — step-by-step operator playbook for checksum validation, backup restore, chunk regeneration, streaming migrations, and rollback (PowerShell examples included).
+- `docs/open_questions.md` — triaged open questions with owners/status and links to the canonical specs.
+- `docs/design_decisions.md` — now contains a "Canonical Defaults" section mirroring `specs_summary.md` for implementer visibility.
+- `docs/game_parameters_setup.md` — updated with example presets (Classic Fantasy, High Lethality, Resource Rich, Magic Overload, Peaceful Exploration).
+
+If you'd like I can also add a CI/test scaffold or inline the defaults into specific feature docs. Ask me to "add CI scaffold" or "inline defaults" and I'll apply the changes.
