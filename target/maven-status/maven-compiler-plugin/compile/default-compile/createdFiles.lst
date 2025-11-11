@@ -1,0 +1,8 @@
+org\adventure\world\WorldGen.class
+org\adventure\world\RandomUtil.class
+org\adventure\world\Biome.class
+org\adventure\Game.class
+org\adventure\world\Plate$TileCoord.class
+org\adventure\world\Plate.class
+org\adventure\world\WorldGen$ChunkData.class
+org\adventure\world\Plate$PlateType.class
