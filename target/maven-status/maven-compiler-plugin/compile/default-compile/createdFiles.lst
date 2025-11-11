@@ -28,3 +28,4 @@ org\adventure\world\River$TileCoord.class
 org\adventure\region\Region$RegionState.class
 org\adventure\character\Trait.class
 org\adventure\world\River$Tile.class
+org\adventure\crafting\CraftingSystem$1.class
