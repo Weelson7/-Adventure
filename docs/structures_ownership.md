@@ -125,6 +125,14 @@ See `docs/design_decisions.md` for canonical rules, and `docs/persistence_versio
 - Fractional/shared ownership: current design says ownership is not fractional—confirm whether shared ownership (co-ownership, joint titles) should be supported as an access-level construct instead of ownership semantics.
 - Inheritance edge-cases: clarify precedence when multiple heirs/claims have equal strength and whether auctions or duels are required as tiebreakers.
 - Tax defaults and tuning: confirm default taxRate, gracePeriod, and seizureThreshold policy and whether fines escalate multiplicatively.
+ - Tax defaults and tuning: confirm default taxRate, gracePeriod, and seizureThreshold policy and whether fines escalate multiplicatively.
+
+### Inline defaults (project canonical)
+
+- Default taxRate: `0.05` (5%) — used when a structure does not override the world preset.
+- Default gracePeriod: `14` in-game days (operator-configurable)
+- Default seizureThreshold: `21` in-game days after grace period
+- Contested expiry default: `contestedExpiryTicks = 7200` (~2 hours at default 1s ticks)
 - Legacy persistence: should structures always record a history entry (for archeology/legacy effects) or only when tied to stories (storage vs fidelity tradeoff)?
 - Dispute resolution automation: how many ticks before a contested flag auto-expires and what actions pause the contest timer?
 

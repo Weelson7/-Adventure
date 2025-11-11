@@ -19,6 +19,13 @@ Harvesting & depletion
 - Taxation cadence: weekly by in-game day (configurable). Apply percentage of taxable income to owner treasury.
 - Example: taxRate = 0.05 (5%); taxCollected = floor( taxableIncome * taxRate ).
 
+**Inline defaults (project canonical)**
+
+- Default taxRate: `0.05` (5%) — used when a world preset or structure does not override it.
+- Default tax cadence: weekly (every 7 in-game days).
+- Default gracePeriod for unpaid taxes: 14 in-game days.
+
+
 ### Economic Model (currency, trade, pricing)
 
 **Currency:**
