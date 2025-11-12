@@ -285,9 +285,7 @@ public class CraftingTest {
         tools.add("steel_hammer");
         
         // Even if craft fails, should get some XP
-        CraftingSystem.CraftingResult result = craftingSystem.craft(
-            recipe, skills, materials, tools
-        );
+        craftingSystem.craft(recipe, skills, materials, tools);
         
         int finalXp = skills.getXp(CraftingCategory.SMITHING);
         assertTrue(finalXp > initialXp); // Always gains some XP

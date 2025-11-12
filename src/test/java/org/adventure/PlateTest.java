@@ -145,15 +145,12 @@ class PlateTest {
         // Over many plates, expect ~70% continental (matching Earth's distribution)
         Random rng = new Random(42L);
         int continentalCount = 0;
-        int oceanicCount = 0;
         int totalPlates = 100;
         
         for (int i = 0; i < totalPlates; i++) {
             Plate plate = Plate.createRandomPlate(i, 512, 512, 123456789L, rng);
             if (plate.getType() == Plate.PlateType.CONTINENTAL) {
                 continentalCount++;
-            } else {
-                oceanicCount++;
             }
         }
         
