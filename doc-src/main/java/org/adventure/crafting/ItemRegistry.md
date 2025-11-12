@@ -1,7 +1,7 @@
 # ItemRegistry.java - MVP Content Definitions
 
-**Package:** `org.adventure.items`  
-**Source:** [ItemRegistry.java](../../../../../src/main/java/org/adventure/items/ItemRegistry.java)  
+**Package:** `org.adventure.crafting`  
+**Source:** [ItemRegistry.java](../../../../../src/main/java/org/adventure/crafting/ItemRegistry.java)  
 **Phase:** MVP Phase 1.4 (Items & Crafting)
 
 ## Overview
