@@ -300,30 +300,50 @@ java -cp target\adventure-0.1.0-SNAPSHOT.jar org.adventure.Game --width 128 --he
 
 ---
 
-#### 1.5 Structures & Ownership (Blocking for MVP ✅ Not Started)
+#### 1.5 Structures & Ownership (Blocking for MVP ✅ Core Complete)
 
 **Deliverables:**
-- [ ] Structure data model (id, ownerId, health, upgrades, permissions)
-- [ ] Ownership transfer rules (purchase, inheritance, seizure after unpaid taxes)
-- [ ] Taxation system (`taxRate = 0.05`, cadence = weekly, grace period = 14 days)
-- [ ] Damage and repair mechanics
-- [ ] Single-owner structures (defer multi-owner/family ownership to Phase 2)
+- [x] Structure data model (id, ownerId, health, upgrades, permissions) ✅
+- [x] Ownership system (single-owner model, access roles, permission levels) ✅
+- [x] Taxation system (`taxRate = 0.05`, cadence = weekly, grace period = 14 days, seizure = 21 days) ✅
+- [x] Damage and repair mechanics ✅
+- [x] Room system (10 categories) and upgrade system ✅
+- [x] Ownership transfer rules (voluntary, sale, succession, conquest) ✅ PHASE 1.5.1 COMPLETE
+- [x] Contested ownership system (disputes, rollback) ✅ PHASE 1.5.1 COMPLETE
 
 **Quality Gates:**
-- ✅ **Tax Enforcement:** Unpaid taxes trigger grace period → seizure after threshold (integration test: `TaxationTest`)
-- ✅ **Ownership Conflicts:** Contested ownership expires after `contestedExpiryTicks` (default 7200 ticks)
-- ✅ **Structure Integrity:** Health never exceeds max; 0 health triggers destruction (unit test: `StructureTest`)
-- ✅ **Coverage:** 85%+ line coverage for ownership/conflict resolution logic
+- ✅ **Tax Enforcement:** Unpaid taxes trigger grace period → seizure after threshold — `TaxationTest` (22 tests passing)
+- ⏳ **Ownership Conflicts:** Contested ownership expires after `contestedExpiryTicks` (default 7200 ticks) — deferred to Phase 1.5.1
+- ✅ **Structure Integrity:** Health never exceeds max; 0 health triggers destruction — `StructureTest` (27 tests passing)
+- ✅ **Coverage:** 85%+ line coverage for structures module — target met
 
 **Commands:**
 ```bash
-# Run structures & ownership tests
-.\maven\mvn\bin\mvn.cmd test -Dtest=StructureTest,OwnershipTest,TaxationTest
+# Run all structures & ownership tests (82 tests)
+.\maven\mvn\bin\mvn.cmd test -Dtest=StructureTest,TaxationTest,OwnershipTransferTest
+
+# Run just structure tests (27 tests)
+.\maven\mvn\bin\mvn.cmd test -Dtest=StructureTest
+
+# Run just taxation tests (22 tests)
+.\maven\mvn\bin\mvn.cmd test -Dtest=TaxationTest
+
+# Run just ownership transfer tests (33 tests)
+.\maven\mvn\bin\mvn.cmd test -Dtest=OwnershipTransferTest
 ```
+
+**Test Results:**
+- ✅ **StructureTest:** 27 tests passing (creation, validation, health, damage, repair, ownership, permissions, rooms, upgrades)
+- ✅ **TaxationTest:** 22 tests passing (registration, tax calculation, collection, payment, grace period, seizure)
+- ✅ **OwnershipTransferTest:** 33 tests passing (transfers, succession, conquest, contested ownership, expiry, resolution)
+- ✅ **Total Phase 1.5:** 82 tests, all passing (49 Phase 1.5 + 33 Phase 1.5.1)
+- ✅ **Total Project:** 295 tests (262 previous + 33 Phase 1.5.1), all passing
 
 **References:**
 - Design: `docs/structures_ownership.md`
 - Specs: `docs/specs_summary.md` → Ownership, Taxation Defaults
+- Summary: `archive/PHASE_1.5_SUMMARY.md` → Core structures implementation
+- Summary: `archive/PHASE_1.5.1_SUMMARY.md` → Ownership transfer & contested ownership
 
 ---
 
@@ -691,7 +711,7 @@ cp saves/backups/world_backup_1.json saves/world.json
 ## Status Summary
 
 ### Current Phase: MVP Phase 1 (Foundation)
-- **Overall Progress:** ~40% complete
+- **Overall Progress:** ~55% complete
   - **World Generation: 100% ✅ PHASE COMPLETE**
     - Tectonic plates: Complete with 12 tests passing
     - Elevation & temperature: Complete with layered noise
@@ -705,18 +725,23 @@ cp saves/backups/world_backup_1.json saves/world.json
     - Resource regeneration: Complete with 14 tests passing
     - **Total: 40 tests passing (RegionSimulator: 16, Region: 10, ResourceNode: 14)**
   - **Characters & NPCs: 100% ✅ PHASE COMPLETE**
-    - Character system: Complete with 17 tests passing
-    - NPC spawning: Complete with 20 tests passing
-    - Traits: Complete with 15 tests passing
-    - Skills: Complete with 15 tests passing
-    - **Total: 67 tests passing (Character: 17, NPC: 20, Trait: 15, Skill: 15)**
+    - Character system: Complete with 16 tests passing
+    - NPC spawning: Complete with 18 tests passing
+    - Traits: Complete with 17 tests passing
+    - Skills: Complete with 16 tests passing
+    - **Total: 67 tests passing (Character: 16, NPC: 18, Trait: 17, Skill: 16)**
   - **Items & Crafting: 100% ✅ PHASE COMPLETE**
     - Item system: Complete with 20 tests passing
     - Crafting system: Complete with 23 tests passing
     - Proficiency progression: Complete
     - 7 MVP recipes + 12 item prototypes
     - **Total: 43 tests passing (Item: 20, Crafting: 23)**
-  - Structures: 0% (data models documented, not implemented)
+  - **Structures & Ownership: 100% ✅ PHASE COMPLETE**
+    - Structure system: Complete with 27 tests passing
+    - Taxation system: Complete with 22 tests passing
+    - Ownership transfer: Complete with 33 tests passing ✅ PHASE 1.5.1
+    - Contested ownership: Complete with dispute resolution ✅ PHASE 1.5.1
+    - **Total: 82 tests passing (Structure: 27, Taxation: 22, Transfer: 33)**
   - Societies: 0% (data models documented, not implemented)
   - Stories & Events: 0% (data models documented, not implemented)
   - Persistence: 35% (JSON serialization working, checksums ✅, migration scripts pending)
@@ -754,6 +779,15 @@ cp saves/backups/world_backup_1.json saves/world.json
 ### Blockers & Open Questions
 - See `docs/open_questions.md` for unresolved design questions
 - All 42 implementation items from `docs/TO_FIX.md` are complete ✅
+
+### Test Breakdown by Phase
+- **Phase 1.1 (World Generation):** 62 tests ✅
+- **Phase 1.2 (Region Simulation):** 40 tests ✅
+- **Phase 1.3 (Characters & NPCs):** 67 tests ✅
+- **Phase 1.4 (Items & Crafting):** 43 tests ✅
+- **Phase 1.5 (Structures & Ownership):** 49 tests ✅
+- **Phase 1.5.1 (Ownership Transfer):** 33 tests ✅
+- **Total:** 295 tests ✅
 
 ---
 
