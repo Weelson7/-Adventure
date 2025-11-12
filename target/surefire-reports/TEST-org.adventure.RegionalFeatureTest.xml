@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.adventure.RegionalFeatureTest" time="0.047" tests="13" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.adventure.RegionalFeatureTest" time="0.05" tests="13" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="BE"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\weel-\AppData\Local\Temp\surefire4689789843712189965\surefirebooter-20251112114214808_3.jar C:\Users\weel-\AppData\Local\Temp\surefire4689789843712189965 2025-11-12T11-42-14_430-jvmRun1 surefire-20251112114214808_1tmp surefire_0-20251112114214808_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\weel-\AppData\Local\Temp\surefire9499326605393555170\surefirebooter-20251112121309418_3.jar C:\Users\weel-\AppData\Local\Temp\surefire9499326605393555170 2025-11-12T12-13-09_008-jvmRun1 surefire-20251112121309418_1tmp surefire_0-20251112121309418_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\weel-\Desktop\!Adventure\!Adventure\target\test-classes;C:\Users\weel-\Desktop\!Adventure\!Adventure\target\classes;C:\Users\weel-\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.3\junit-jupiter-5.9.3.jar;C:\Users\weel-\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.3\junit-jupiter-api-5.9.3.jar;C:\Users\weel-\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\weel-\.m2\repository\org\junit\platform\junit-platform-commons\1.9.3\junit-platform-commons-1.9.3.jar;C:\Users\weel-\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\weel-\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.3\junit-jupiter-params-5.9.3.jar;C:\Users\weel-\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.3\junit-jupiter-engine-5.9.3.jar;C:\Users\weel-\.m2\repository\org\junit\platform\junit-platform-engine\1.9.3\junit-platform-engine-1.9.3.jar;C:\Users\weel-\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.2\jackson-databind-2.15.2.jar;C:\Users\weel-\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar;C:\Users\weel-\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.2\jackson-core-2.15.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\weel-\AppData\Local\Temp\surefire4689789843712189965\surefirebooter-20251112114214808_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\weel-\AppData\Local\Temp\surefire9499326605393555170\surefirebooter-20251112121309418_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.8+12-LTS-250"/>
@@ -58,17 +58,17 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testFeatureDensityControl" classname="org.adventure.RegionalFeatureTest" time="0.01"/>
+  <testcase name="testFeatureDensityControl" classname="org.adventure.RegionalFeatureTest" time="0.009"/>
   <testcase name="testDifferentSeedsProduceDifferentFeatures" classname="org.adventure.RegionalFeatureTest" time="0.002"/>
   <testcase name="testSubmergedCityPlacement" classname="org.adventure.RegionalFeatureTest" time="0.002"/>
   <testcase name="testFeatureCompatibilityRules" classname="org.adventure.RegionalFeatureTest" time="0.001"/>
   <testcase name="testFeatureCountScalesWithWorldSize" classname="org.adventure.RegionalFeatureTest" time="0.004"/>
   <testcase name="testVolcanoPlacement" classname="org.adventure.RegionalFeatureTest" time="0.001"/>
   <testcase name="testFeatureGenerationDeterminism" classname="org.adventure.RegionalFeatureTest" time="0.001"/>
-  <testcase name="testFeatureSeparation" classname="org.adventure.RegionalFeatureTest" time="0.007"/>
+  <testcase name="testFeatureSeparation" classname="org.adventure.RegionalFeatureTest" time="0.006"/>
   <testcase name="testFeatureGetters" classname="org.adventure.RegionalFeatureTest" time="0"/>
-  <testcase name="testMagicZonePlacement" classname="org.adventure.RegionalFeatureTest" time="0.002"/>
-  <testcase name="testAllFeatureTypesCanGenerate" classname="org.adventure.RegionalFeatureTest" time="0.012"/>
-  <testcase name="testFeatureIntensityRange" classname="org.adventure.RegionalFeatureTest" time="0.001"/>
-  <testcase name="testFeatureEffectDescriptions" classname="org.adventure.RegionalFeatureTest" time="0"/>
+  <testcase name="testMagicZonePlacement" classname="org.adventure.RegionalFeatureTest" time="0.001"/>
+  <testcase name="testAllFeatureTypesCanGenerate" classname="org.adventure.RegionalFeatureTest" time="0.014"/>
+  <testcase name="testFeatureIntensityRange" classname="org.adventure.RegionalFeatureTest" time="0.002"/>
+  <testcase name="testFeatureEffectDescriptions" classname="org.adventure.RegionalFeatureTest" time="0.001"/>
 </testsuite>

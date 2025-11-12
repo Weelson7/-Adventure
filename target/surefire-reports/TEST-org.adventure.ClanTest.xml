@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.adventure.CharacterTest" time="0.037" tests="16" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.adventure.ClanTest" time="0.063" tests="25" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,20 +58,29 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testManaRegeneration" classname="org.adventure.CharacterTest" time="0.009"/>
-  <testcase name="testStatSoftCap" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testCharacterCreation" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testManaSpending" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testInventoryManagement" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testSkillAcquisition" classname="org.adventure.CharacterTest" time="0.006"/>
-  <testcase name="testStatDeterminism" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testDerivedStatCalculation" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testStatClamping" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testManaRegenerationCap" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testStatProgression" classname="org.adventure.CharacterTest" time="0"/>
-  <testcase name="testStatHardCap" classname="org.adventure.CharacterTest" time="0"/>
-  <testcase name="testSkillXPTraitModifier" classname="org.adventure.CharacterTest" time="0"/>
-  <testcase name="testSkillXPProgression" classname="org.adventure.CharacterTest" time="0"/>
-  <testcase name="testTraitEffects" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testTraitAddition" classname="org.adventure.CharacterTest" time="0.002"/>
+  <testcase name="testMergeClans" classname="org.adventure.ClanTest" time="0.009"/>
+  <testcase name="testClanNameCannotBeNull" classname="org.adventure.ClanTest" time="0.001"/>
+  <testcase name="testCannotAddDuplicateMember" classname="org.adventure.ClanTest" time="0.006"/>
+  <testcase name="testUpdateLastActiveTick" classname="org.adventure.ClanTest" time="0"/>
+  <testcase name="testKingdomTypeClan" classname="org.adventure.ClanTest" time="0.001"/>
+  <testcase name="testGuildTypeClan" classname="org.adventure.ClanTest" time="0"/>
+  <testcase name="testTreasuryCannotBeNegative" classname="org.adventure.ClanTest" time="0.003"/>
+  <testcase name="testCannotDepositNegativeAmount" classname="org.adventure.ClanTest" time="0.001"/>
+  <testcase name="testClanToString" classname="org.adventure.ClanTest" time="0.015"/>
+  <testcase name="testMergeClansRelationships" classname="org.adventure.ClanTest" time="0.001"/>
+  <testcase name="testRemoveMember" classname="org.adventure.ClanTest" time="0.001"/>
+  <testcase name="testAddMember" classname="org.adventure.ClanTest" time="0"/>
+  <testcase name="testBuilderCopyClan" classname="org.adventure.ClanTest" time="0"/>
+  <testcase name="testCreateClan" classname="org.adventure.ClanTest" time="0.001"/>
+  <testcase name="testWithdrawFunds" classname="org.adventure.ClanTest" time="0"/>
+  <testcase name="testDepositFunds" classname="org.adventure.ClanTest" time="0"/>
+  <testcase name="testUpdateRelationship" classname="org.adventure.ClanTest" time="0"/>
+  <testcase name="testCannotWithdrawMoreThanBalance" classname="org.adventure.ClanTest" time="0.003"/>
+  <testcase name="testIsEmpty" classname="org.adventure.ClanTest" time="0.001"/>
+  <testcase name="testTreasuryNeverGoesNegative" classname="org.adventure.ClanTest" time="0.002"/>
+  <testcase name="testClanNameCannotBeEmpty" classname="org.adventure.ClanTest" time="0.002"/>
+  <testcase name="testMultipleTreasuryOperations" classname="org.adventure.ClanTest" time="0"/>
+  <testcase name="testMergeClansWithDuplicateMembers" classname="org.adventure.ClanTest" time="0.001"/>
+  <testcase name="testClanEquality" classname="org.adventure.ClanTest" time="0"/>
+  <testcase name="testCannotRemoveNonExistentMember" classname="org.adventure.ClanTest" time="0.001"/>
 </testsuite>

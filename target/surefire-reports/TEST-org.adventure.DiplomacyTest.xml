@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.adventure.CharacterTest" time="0.037" tests="16" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.adventure.DiplomacyTest" time="0.035" tests="30" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -58,20 +58,34 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testManaRegeneration" classname="org.adventure.CharacterTest" time="0.009"/>
-  <testcase name="testStatSoftCap" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testCharacterCreation" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testManaSpending" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testInventoryManagement" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testSkillAcquisition" classname="org.adventure.CharacterTest" time="0.006"/>
-  <testcase name="testStatDeterminism" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testDerivedStatCalculation" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testStatClamping" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testManaRegenerationCap" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testStatProgression" classname="org.adventure.CharacterTest" time="0"/>
-  <testcase name="testStatHardCap" classname="org.adventure.CharacterTest" time="0"/>
-  <testcase name="testSkillXPTraitModifier" classname="org.adventure.CharacterTest" time="0"/>
-  <testcase name="testSkillXPProgression" classname="org.adventure.CharacterTest" time="0"/>
-  <testcase name="testTraitEffects" classname="org.adventure.CharacterTest" time="0.001"/>
-  <testcase name="testTraitAddition" classname="org.adventure.CharacterTest" time="0.002"/>
+  <testcase name="testRelationshipToString" classname="org.adventure.DiplomacyTest" time="0.009"/>
+  <testcase name="testApplyDiplomaticGift" classname="org.adventure.DiplomacyTest" time="0.002"/>
+  <testcase name="testCalculateAllianceStrength" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testInfluenceClamped" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testInfluenceDecay" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testCannotFormAllianceWeak" classname="org.adventure.DiplomacyTest" time="0.005"/>
+  <testcase name="testWarNotLikelyNeutral" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testGetPositiveRelations" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testCanFormAlliance" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testCalculateWarLikelihood" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testRaceAffinityClamped" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testApplyBetrayal" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testApplyWarDeclaration" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testApplyTradeMission" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testReputationDecayPositive" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testInfluenceNeverNegative" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testGetNegativeRelations" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testRelationshipEquality" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testReputationDecayNegative" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testReputationClamped" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testProcessPeriodicDecay" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testUpdateReputation" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testCreateRelationshipRecord" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testRaceAffinityNoDecay" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testAlignmentClamped" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testFormAlliance" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testWarNotLikelyNoRelationship" classname="org.adventure.DiplomacyTest" time="0.001"/>
+  <testcase name="testApplyTradeMissionExisting" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testAlignmentMinimalDecay" classname="org.adventure.DiplomacyTest" time="0"/>
+  <testcase name="testIsWarLikely" classname="org.adventure.DiplomacyTest" time="0"/>
 </testsuite>

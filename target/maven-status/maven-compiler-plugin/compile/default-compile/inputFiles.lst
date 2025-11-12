@@ -1,4 +1,5 @@
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\region\Region.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\society\RelationshipRecord.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\AccessLevel.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\character\Skill.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\TaxRecord.java
@@ -12,6 +13,7 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structu
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\StructureType.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\Game.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\world\Plate.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\society\Clan.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\crafting\CraftingProficiency.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\items\Item.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\OwnerType.java
@@ -35,7 +37,9 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\items\I
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\Structure.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\world\River.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\items\ItemPrototype.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\society\Diplomacy.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\world\RandomUtil.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\character\Race.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\society\ClanType.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\character\Trait.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\world\Biome.java

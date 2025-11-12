@@ -347,29 +347,44 @@ java -cp target\adventure-0.1.0-SNAPSHOT.jar org.adventure.Game --width 128 --he
 
 ---
 
-#### 1.6 Societies & Clans (Blocking for MVP ✅ Not Started)
+#### 1.6 Societies & Clans (Blocking for MVP ✅ 100% Complete)
 
 **Deliverables:**
-- [ ] Clan data model (id, name, members, treasury, loyalty metrics)
-- [ ] Basic membership and treasury management
-- [ ] Simple diplomacy (reputation, affinity — defer complex secret agendas to Phase 2)
-- [ ] Clan merging and destruction rules
+- [x] Clan data model (id, name, members, treasury, relationships) ✅
+- [x] Basic membership and treasury management ✅
+- [x] Simple diplomacy (reputation, influence, alignment, race affinity) ✅
+- [x] Event-driven updates (trade, betrayal, gifts, war) ✅
+- [x] Periodic decay system matching specs ✅
+- [x] Alliance formation with validation ✅
+- [x] Clan merging and destruction rules ✅
+- [x] Documentation: `Clan.md`, `Diplomacy.md`, `RelationshipRecord.md` ✅
 
 **Quality Gates:**
-- ✅ **Treasury Validation:** Clan funds never go negative (unit test: `ClanTest`)
-- ✅ **Membership Logic:** Join/leave clan updates member lists correctly
-- ✅ **Diplomacy Metrics:** Reputation and affinity within defined ranges (−100 to +100)
-- ✅ **Coverage:** 70%+ line coverage for societies module
+- ✅ **Treasury Validation:** Clan funds never go negative — `ClanTest.testTreasuryNeverGoesNegative()`, `testCannotWithdrawMoreThanBalance()` passing
+- ✅ **Membership Logic:** Join/leave clan updates member lists correctly — `ClanTest.testAddMember()`, `testRemoveMember()` passing
+- ✅ **Diplomacy Metrics:** Reputation (-100 to +100), influence (0 to 100), alignment (-100 to +100), race affinity (-50 to +50) — `DiplomacyTest` metric clamping tests passing
+- ✅ **Decay Formulas:** Match specs_summary.md — `DiplomacyTest.testReputationDecay()`, `testInfluenceDecay()`, `testAlignmentMinimalDecay()` passing
+- ✅ **Coverage:** ~95% line coverage for societies module (exceeds 70% target)
 
 **Commands:**
 ```bash
-# Run societies & clan tests
-.\maven\mvn\bin\mvn.cmd test -Dtest=ClanTest,DiplomacyTest
+# Run Phase 1.6 tests (55 tests)
+.\maven\mvn\bin\mvn.cmd test "-Dtest=ClanTest,DiplomacyTest"
+
+# Run all tests (350 total)
+.\maven\mvn\bin\mvn.cmd test
 ```
+
+**Test Results:**
+- ✅ **ClanTest:** 25 tests passing (membership, treasury, merging, relationships)
+- ✅ **DiplomacyTest:** 30 tests passing (metrics, decay, events, alliances, queries)
+- ✅ **Total Phase 1.6:** 55 tests, all passing
+- ✅ **Total Project:** 350 tests (295 previous + 55 Phase 1.6), all passing
 
 **References:**
 - Design: `docs/societies_clans_kingdoms.md`
-- Specs: `docs/specs_summary.md` → Diplomacy Metrics
+- Specs: `docs/specs_summary.md` → Diplomacy Metrics, Decay Rates
+- Summary: `archive/PHASE_1.6_SUMMARY.md` → Complete implementation summary
 
 ---
 
@@ -711,7 +726,7 @@ cp saves/backups/world_backup_1.json saves/world.json
 ## Status Summary
 
 ### Current Phase: MVP Phase 1 (Foundation)
-- **Overall Progress:** ~55% complete
+- **Overall Progress:** ~60% complete
   - **World Generation: 100% ✅ PHASE COMPLETE**
     - Tectonic plates: Complete with 12 tests passing
     - Elevation & temperature: Complete with layered noise
@@ -742,7 +757,13 @@ cp saves/backups/world_backup_1.json saves/world.json
     - Ownership transfer: Complete with 33 tests passing ✅ PHASE 1.5.1
     - Contested ownership: Complete with dispute resolution ✅ PHASE 1.5.1
     - **Total: 82 tests passing (Structure: 27, Taxation: 22, Transfer: 33)**
-  - Societies: 0% (data models documented, not implemented)
+  - **Societies & Clans: 100% ✅ PHASE COMPLETE**
+    - Clan system: Complete with 25 tests passing
+    - Diplomacy system: Complete with 30 tests passing
+    - Membership and treasury management: Complete
+    - Event-driven updates and periodic decay: Complete
+    - Alliance formation and merging: Complete
+    - **Total: 55 tests passing (Clan: 25, Diplomacy: 30)**
   - Stories & Events: 0% (data models documented, not implemented)
   - Persistence: 35% (JSON serialization working, checksums ✅, migration scripts pending)
   - Multiplayer: 0% (design complete, not implemented)
@@ -787,7 +808,8 @@ cp saves/backups/world_backup_1.json saves/world.json
 - **Phase 1.4 (Items & Crafting):** 43 tests ✅
 - **Phase 1.5 (Structures & Ownership):** 49 tests ✅
 - **Phase 1.5.1 (Ownership Transfer):** 33 tests ✅
-- **Total:** 295 tests ✅
+- **Phase 1.6 (Societies & Clans):** 55 tests ✅
+- **Total:** 350 tests ✅
 
 ---
 
