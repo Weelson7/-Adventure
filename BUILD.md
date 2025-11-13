@@ -26,15 +26,30 @@ This document is the **central guide** for building the !Adventure game. It trac
 
 ## Related Build Guides
 
-This guide covers **Phase 1 (MVP)** — the backend foundation. For other development areas:
+This guide covers **Phase 1.1-1.10 (MVP Backend)** — the foundational systems. For core gameplay and UI:
 
-- **[BUILD-GAMEPLAY.md](BUILD-GAMEPLAY.md)** — Gameplay loop and user interface development
-  - Character creation, movement, combat, inventory, quests, tutorials
-  - Covers the gap between backend systems and playable game
+- **[BUILD_PHASE1.11.x.md](BUILD_PHASE1.11.x.md)** — ⭐⭐⭐ **CRITICAL: Core Gameplay Systems**
+  - Progression (XP/leveling), Combat (damage/death), Economy (currency flow)
+  - Save/Load backend, Reputation system
+  - **BLOCKS MVP:** Must complete before game is playable
+  - **Timeline:** 4 weeks, parallel with Gameplay UI
   
-- **[BUILD_PHASE2.md](BUILD_PHASE2.md)** — Phase 2 advanced systems development
+- **[BUILD-GAMEPLAY.md](BUILD-GAMEPLAY.md)** — ⭐⭐⭐ **CRITICAL: Player-Facing UI**
+  - Character creation, movement, combat UI, inventory, quests, tutorials
+  - Save/Load UI, error handling (user-facing)
+  - **BLOCKS MVP:** Bridges backend to playable game
+  - **Timeline:** 4 weeks, parallel with Phase 1.11.x
+
+- **[BUILD_PHASE2.10.x.md](BUILD_PHASE2.10.x.md)** — ⭐ **POST-MVP: Operations & Advanced Content**
+  - Admin tools, error logging, performance optimization, world events
+  - **NOT BLOCKING MVP:** Can launch without these, add post-release
+  - **Timeline:** 4 weeks after launch
+  
+- **[BUILD_PHASE2.md](BUILD_PHASE2.md)** — ⭐ **POST-MVP: Phase 2 Advanced Systems**
   - Magic system, advanced diplomacy, dynamic economy, NPC AI
-  - Modding support, performance optimization, content creation
+  - Modding support, content creation tools
+  - **Timeline:** Post-MVP depth features
+
 
 ---
 
