@@ -468,12 +468,31 @@ fn main() {
   - [ ] Reputation/faction standings
   - [ ] Active effects/buffs/debuffs display
 
+- [ ] **Save/Load UI** (ADDED: Critical Missing Feature)
+  - [ ] Save game menu with named save slots
+  - [ ] Quick save hotkey (F5 or configurable)
+  - [ ] Character selection screen (list all characters)
+  - [ ] Save file management (rename, delete, backup)
+  - [ ] Autosave indicator and settings
+  - [ ] Load game preview (character level, location, playtime)
+  - [ ] Corruption detection and backup restoration
+  - [ ] Integration with Phase 1.11.4 SaveLoadManager backend
+
 **Quality Gates:**
 - ✅ **Playable Loop:** Player can create character, move around world, gather resources, and save progress
 - ✅ **No Crashes:** 1 hour of continuous play without crashes or freezes
 - ✅ **Response Time:** All UI actions respond in <100ms (95th percentile)
 - ✅ **Accessibility:** All core actions accessible via keyboard shortcuts
 - ✅ **Tutorial:** First-time player can complete tutorial without external help
+- ✅ **Save Reliability:** Save/load works 100% of the time, no data loss
+- ✅ **Error Handling:** All user errors (invalid input, network failure) show clear error messages (ADDED)
+
+**Error Handling Guidelines (ADDED):**
+- **Graceful Degradation:** Network errors don't crash game; show "Reconnecting..." message
+- **Input Validation:** Reject invalid inputs with helpful messages ("Name must be 3-20 characters")
+- **State Recovery:** Game can recover from unexpected states (stuck in combat, corrupted UI)
+- **User Feedback:** All errors explained in plain language, no stack traces shown to players
+- **Logging:** All errors logged to file for debugging (see Phase 2.10.2 Error Logging)
 
 **Commands:**
 ```bash
@@ -863,10 +882,12 @@ java -cp target\adventure-0.1.0-SNAPSHOT.jar org.adventure.SettingsEditor
   - [ ] Guided first-time experience (5-10 minutes)
   - [ ] Step-by-step character creation
   - [ ] Movement basics (WASD or arrow keys)
-  - [ ] Combat basics (attack a dummy target)
+  - [ ] Combat basics (attack a dummy target) — NOTE: Requires Phase 1.11.2 Combat System
   - [ ] Inventory basics (pick up, equip, drop)
-  - [ ] First quest completion
-  - [ ] Save/load introduction
+  - [ ] Crafting basics (craft first item) — UI connects to Phase 1.4 CraftingSystem
+  - [ ] XP and leveling introduction — UI connects to Phase 1.11.1 ExperienceSystem
+  - [ ] First quest completion — UI connects to Phase G.5 Quest System
+  - [ ] Save/load introduction — UI connects to Phase 1.11.4 SaveLoadManager
   - [ ] Tutorial skippable for experienced players
   - [ ] Optional tutorial replay from main menu
 
@@ -878,20 +899,38 @@ java -cp target\adventure-0.1.0-SNAPSHOT.jar org.adventure.SettingsEditor
   - [ ] Keybinding cheat sheet
   - [ ] FAQ section for common questions
   - [ ] Glossary of game terms
+  - [ ] Gameplay tips and tricks section
+  - [ ] Video tutorials (optional, links to YouTube)
 
 - [ ] **New Player Guidance**
-  - [ ] Recommended first steps checklist
+  - [ ] Recommended first steps checklist ("Complete tutorial", "Join a clan", "Craft your first weapon")
   - [ ] Progressive feature unlocking (don't overwhelm)
   - [ ] Tooltips for new features (first-time hints)
-  - [ ] Suggested builds or playstyles
-  - [ ] "What to do next?" prompt when idle
-  - [ ] Community resources links (wiki, Discord)
+  - [ ] Suggested builds or playstyles ("Try a warrior build", "Focus on crafting")
+  - [ ] "What to do next?" prompt when idle (idle for 30s → suggest action)
+  - [ ] Community resources links (wiki, Discord, Reddit)
+  - [ ] Mentor/helper NPC (in-game guide character)
+
+- [ ] **Tutorial Content Areas (EXPANDED):**
+  - [ ] **Basic Movement:** Arrow keys, WASD, mouse click (if GUI)
+  - [ ] **Resource Gathering:** Find and harvest trees, ore nodes (Phase 1.2 integration)
+  - [ ] **Combat Introduction:** Attack enemy dummy, use skills (Phase 1.11.2)
+  - [ ] **Crafting Your First Item:** Craft a simple weapon or tool (Phase 1.4)
+  - [ ] **Understanding Stats:** Explain strength, dexterity, vitality, intelligence (Phase 1.3)
+  - [ ] **Inventory Management:** Pick up, equip, drop items (Phase G.3)
+  - [ ] **Experience and Leveling:** Gain XP, level up, allocate stat points (Phase 1.11.1)
+  - [ ] **Quest Basics:** Accept quest, complete objective, claim reward (Phase G.5)
+  - [ ] **Clan Introduction:** Join starter clan, view treasury (Phase 1.6)
+  - [ ] **Trading Basics:** Buy from NPC merchant, sell items (Phase 1.11.3)
+  - [ ] **Saving Your Progress:** Manual save, autosave explanation (Phase 1.11.4)
 
 **Quality Gates:**
 - ✅ **Completion Rate:** 80%+ of new players complete tutorial
 - ✅ **Time to First Success:** New player completes first quest in <15 minutes
 - ✅ **Help Usage:** <20% of players need external help (wiki, forums)
 - ✅ **Clarity:** Tutorial feedback shows 90%+ comprehension
+- ✅ **Coverage:** Tutorial covers all Phase G.1 core mechanics
+- ✅ **Accessibility:** Tutorial works with keyboard-only, screen readers
 
 **Commands:**
 ```bash

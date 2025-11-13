@@ -962,6 +962,59 @@ Closes #42
 
 ---
 
+## 🚨 CRITICAL: Phase 1.10.x — Living World (IN PROGRESS)
+
+**Status:** ⚠️ BLOCKING GAP IDENTIFIED — Worldgen lacks initial conditions
+
+While Phase 1.1-1.10 completed all backend systems, **a critical gap was discovered**:
+- ❌ Worldgen only creates geography (no clans, settlements, NPCs, quests)
+- ❌ World is static (nothing grows, expands, or changes over time)
+- ❌ Game feels dead, not alive
+
+**Solution:** Phase 1.10.x adds living world features:
+- ✅ Initial clans, settlements, prophecies, quests at worldgen
+- ✅ Village/city formation from structure clusters
+- ✅ Road networks connecting settlements
+- ✅ Dynamic clan expansion & structure lifecycle
+- ✅ Living world simulation (builds, grows, destroys)
+
+**👉 See [BUILD_PHASE1.10.x.md](BUILD_PHASE1.10.x.md) for implementation guide**  
+**👉 See [PHASE1.10_CRITICAL_SUMMARY.md](PHASE1.10_CRITICAL_SUMMARY.md) for quick overview**
+
+---
+
+## Next Steps
+
+### Priority Order:
+
+1. **🔥 CRITICAL: Phase 1.10.x (Living World)** → See [BUILD_PHASE1.10.x.md](BUILD_PHASE1.10.x.md)
+   - Add worldgen initial conditions (clans, settlements, quests, prophecies)
+   - Implement village/city formation & road generation
+   - Enable dynamic world simulation (clan expansion, structure lifecycle)
+   - **BLOCKING FOR MVP** — Game not playable without this
+
+2. **Gameplay & UI Development** → See [BUILD-GAMEPLAY.md](BUILD-GAMEPLAY.md)
+   - Web client architecture
+   - Character creation UI
+   - World map rendering
+   - Inventory & crafting interfaces
+   - Real-time multiplayer interactions
+
+3. **Phase 2: Advanced Systems** → See [BUILD_PHASE2.md](BUILD_PHASE2.md)
+   - Magic system implementation
+   - Advanced diplomacy & secret agendas
+   - Dynamic economy & trade routes
+   - NPC AI & behavior trees
+   - Modding support & sandboxing
+
+4. **Deployment** → See [deployment/DEPLOYMENT.md](deployment/DEPLOYMENT.md)
+   - Docker containerization
+   - Cloud deployment (AWS/Azure/GCP)
+   - CI/CD pipeline setup
+   - Monitoring & logging
+
+---
+
 ## License
 
 (To be determined — placeholder for license info)
