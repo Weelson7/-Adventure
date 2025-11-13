@@ -7,6 +7,8 @@ This README gives a concise orientation for contributors and operators: where to
 ## Quick links
 
 - Docs: `docs/` (detailed design documents and decisions)
+- Build Guide: `BUILD.md` (phases, quality gates, build commands)
+- Deployment Guide: `deployment/DEPLOYMENT.md` (Windows, Linux, Docker, cloud platforms)
 - High-level tracker: `docs/TO_FIX.md` (implementation tracker)
 - Canonical decisions: `docs/design_decisions.md`
 - Specs & defaults: `docs/specs_summary.md`
@@ -25,17 +27,67 @@ If you need a full IDE layout for VS Code, use the existing `.vscode` settings o
 
 ## Running the quick prototype (Java)
 
-This repo contains `App.java` as a minimal entry point. The project is intentionally light-weight; pick your preferred Java toolchain (javac/java, Maven, or Gradle).
+This repo contains a fully functional game with world generation, region simulation, characters, items, crafting, societies, stories, persistence, and multiplayer networking. The project includes executable JAR packaging for easy deployment.
 
-Example: compile & run with plain Java (Windows PowerShell):
+### Quick Start (Recommended)
 
+#### Windows (PowerShell)
 ```powershell
-# from repo root
-javac -d bin -sourcepath src src\App.java
-java -cp bin App
+# One-command deployment (build, test, package)
+.\deployment\deploy.ps1
+
+# Run the game
+java -jar target\adventure-0.1.0-SNAPSHOT.jar --interactive
 ```
 
-If you prefer Maven/Gradle, create `pom.xml` or `build.gradle` and wire dependencies. The docs and tests expect a Java toolchain by default.
+#### Linux/macOS (Bash)
+```bash
+# One-command deployment (build, test, package)
+./deployment/deploy.sh
+
+# Run the game
+java -jar target/adventure-0.1.0-SNAPSHOT.jar --interactive
+```
+
+### Manual Build (Maven)
+
+Example: compile & run with Maven (Windows PowerShell):
+
+```powershell
+# Build and test
+.\maven\mvn\bin\mvn.cmd clean package
+
+# Run server mode
+java -jar target\adventure-0.1.0-SNAPSHOT.jar --server --port 8080
+
+# Run interactive client
+java -jar target\adventure-0.1.0-SNAPSHOT.jar --interactive
+
+# Run world viewer (ASCII art)
+java -jar target\adventure-0.1.0-SNAPSHOT.jar --width 60 --height 25 --seed 12345
+```
+
+For Linux/macOS, use `./maven/mvn/bin/mvn` instead.
+
+### Docker Deployment
+
+```bash
+# Build and run with Docker Compose
+docker-compose -f deployment/docker-compose.yml up -d adventure-server
+
+# Or build Docker image manually
+docker build -f deployment/Dockerfile -t adventure:latest .
+docker run -d -p 8080:8080 adventure:latest
+```
+
+### Full Deployment Guide
+
+See **`deployment/DEPLOYMENT.md`** for comprehensive deployment instructions including:
+- Cross-platform deployment (Windows, Linux, macOS)
+- Docker and Kubernetes deployment
+- Cloud deployment (AWS, Azure, GCP)
+- Configuration and tuning
+- Troubleshooting
 
 ## Documentation structure (high-level)
 

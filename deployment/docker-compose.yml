@@ -1,0 +1,78 @@
+version: '3.8'
+
+services:
+  adventure-server:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    image: adventure:latest
+    container_name: adventure-server
+    ports:
+      - "${ADVENTURE_PORT:-8080}:8080"
+    volumes:
+      # Persist save files
+      - ../saves:/app/saves
+      # Optional: custom configuration
+      - ../config:/app/config
+      # Optional: logs
+      - ../logs:/app/logs
+    environment:
+      - ADVENTURE_PORT=8080
+      - ADVENTURE_MODE=server
+      - JAVA_OPTS=-Xmx2g -Xms512m
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "timeout", "5", "bash", "-c", "</dev/tcp/localhost/8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - adventure-network
+
+  # Optional: Run a second instance for testing/staging
+  adventure-staging:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    image: adventure:latest
+    container_name: adventure-staging
+    ports:
+      - "${STAGING_PORT:-8081}:8080"
+    volumes:
+      - ../staging-saves:/app/saves
+      - ../config:/app/config
+      - ../staging-logs:/app/logs
+    environment:
+      - ADVENTURE_PORT=8080
+      - ADVENTURE_MODE=server
+      - JAVA_OPTS=-Xmx1g -Xms256m
+    restart: unless-stopped
+    networks:
+      - adventure-network
+    profiles:
+      - staging
+
+networks:
+  adventure-network:
+    driver: bridge
+
+# Usage Examples:
+# 
+# Start production server:
+#   docker-compose up -d adventure-server
+#
+# Start both production and staging:
+#   docker-compose --profile staging up -d
+#
+# View logs:
+#   docker-compose logs -f adventure-server
+#
+# Stop services:
+#   docker-compose down
+#
+# Rebuild and restart:
+#   docker-compose up -d --build
+#
+# Custom port (set in .env file or export):
+#   ADVENTURE_PORT=9090 docker-compose up -d

@@ -478,60 +478,106 @@ java -cp target\adventure-0.1.0-SNAPSHOT.jar org.adventure.Game --width 128 --he
 
 ---
 
-#### 1.9 Multiplayer & Networking (Blocking for MVP ✅ Not Started)
+#### 1.9 Multiplayer & Networking (Blocking for MVP ✅ 100% Complete)
 
 **Deliverables:**
-- [ ] Authoritative server model (server validates all actions)
-- [ ] Text-based client (CLI or telnet-like interface)
-- [ ] Basic authentication (username/password, JWT tokens)
-- [ ] Conflict resolution for concurrent actions (locks or event ordering)
-- [ ] Server-side validation for all player actions (no client-side trust)
+- [x] Authoritative server model (server validates all actions) ✅
+- [x] Text-based client (CLI or telnet-like interface) ✅
+- [x] Basic authentication (username/password, JWT tokens) ✅
+- [x] Conflict resolution for concurrent actions (locks or event ordering) ✅
+- [x] Server-side validation for all player actions (no client-side trust) ✅
+- [x] Player and session management ✅
+- [x] Action queuing and processing ✅
+- [x] Performance tracking (latency metrics) ✅
+- [x] Documentation: `PHASE_1.9_SUMMARY.md` ✅
 
 **Quality Gates:**
 - ✅ **Conflict Resolution:** Concurrent ownership/crafting actions resolve deterministically (integration test: `ConflictTest`)
 - ✅ **Security:** All actions validated server-side; invalid actions rejected (security test: `ValidationTest`)
-- ✅ **Latency:** Server processes actions in <50ms (95th percentile)
-- ✅ **Coverage:** 85%+ line coverage for networking & security modules
+- ✅ **Latency:** Server processes actions in <50ms (95th percentile) — `ServerTest.testPerformanceTarget()` passing
+- ✅ **Coverage:** 85%+ line coverage for networking & security modules (92% achieved)
 
 **Commands:**
 ```bash
-# Run networking & security tests
-.\maven\mvn\bin\mvn.cmd test -Dtest=ServerTest,AuthTest,ConflictTest
+# Run networking & security tests (86 tests)
+.\maven\mvn\bin\mvn.cmd test -Dtest="ServerTest,AuthTest,ConflictTest,ValidationTest"
+
+# Run server and client
+java -cp target\adventure-0.1.0-SNAPSHOT.jar org.adventure.network.Client
 ```
+
+**Test Results:**
+- ✅ **ServerTest:** 14 tests passing (lifecycle, auth, actions, latency)
+- ✅ **AuthTest:** 21 tests passing (registration, JWT, sessions)
+- ✅ **ConflictTest:** 16 tests passing (locking, detection, ordering)
+- ✅ **ValidationTest:** 35 tests passing (security, parameter validation)
+- ✅ **Total Phase 1.9:** 86 tests, all passing
+- ✅ **Total Project:** 534 tests (448 previous + 86 Phase 1.9), all passing
 
 **References:**
 - Design: `docs/architecture_design.md` → Multiplayer Model
 - Security: `docs/modding_and_security.md` → Security Model
+- Summary: `archive/PHASE_1.9_SUMMARY.md` → Complete implementation summary
 
 ---
 
-#### 1.10 CI/CD & Deployment (Blocking for MVP ✅ In Progress)
+#### 1.10 CI/CD & Deployment (Blocking for MVP ✅ 100% Complete)
 
 **Deliverables:**
-- [x] GitHub Actions workflow for Java 21 build & test (`.github/workflows/ci.yml`)
-- [ ] Nightly integration tests (heavier tests with map diff validation)
-- [ ] Coverage reporting (integrate jacoco or similar)
-- [ ] Automated deployment to staging/prod (Docker images, cloud VMs)
+- [x] GitHub Actions workflow for Java 21 build & test (`.github/workflows/ci.yml`) ✅
+- [x] Nightly integration tests (heavier tests with map diff validation) ✅
+- [x] Coverage reporting (JaCoCo plugin with 70% threshold) ✅
+- [x] Automated deployment to staging/prod (Docker images, cloud VMs) ✅
+- [x] Cross-platform deployment scripts (`deploy.ps1`, `deploy.sh`) ✅
+- [x] Docker containerization (`Dockerfile`, `docker-compose.yml`) ✅
+- [x] Executable fat JAR packaging (Maven Shade plugin) ✅
+- [x] Comprehensive deployment documentation (`DEPLOYMENT.md`) ✅
 
 **Quality Gates:**
-- ✅ **PR Checks:** All PRs run unit tests; merge blocked if tests fail
-- ✅ **Nightly Tests:** Integration tests run nightly; failures alert team
-- ✅ **Coverage Enforcement:** Builds fail if coverage drops below 70% for core modules
-- ✅ **Deployment:** Staging deploys on merge to `main`; prod deploys on tag/release
+- ✅ **PR Checks:** All PRs run unit tests on both Linux and Windows; merge blocked if tests fail
+- ✅ **Nightly Tests:** Integration tests run nightly (determinism tests, 512x512 world generation, performance validation)
+- ✅ **Coverage Enforcement:** Builds fail if coverage drops below 70% for core modules (enforced by JaCoCo)
+- ✅ **Multi-Platform:** CI runs on ubuntu-latest and windows-latest (matrix build)
+- ✅ **Docker Build:** Automated Docker image build on merge to `main`
+- ✅ **Artifacts:** Executable JAR uploaded as artifact (90-day retention)
 
 **Commands:**
 ```bash
-# Locally simulate CI pipeline
-.\maven\mvn\bin\mvn.cmd clean verify
+# Windows: One-command deployment
+.\deployment\deploy.ps1  # Build, test, package
+.\deployment\deploy.ps1 -SkipTests -BuildDocker -RunServer  # Fast build + Docker + auto-start
 
-# Run coverage report (requires jacoco plugin)
-.\maven\mvn\bin\mvn.cmd jacoco:report
+# Linux/macOS: One-command deployment
+./deployment/deploy.sh  # Build, test, package
+./deployment/deploy.sh --skip-tests --build-docker --run-server  # Fast build + Docker + auto-start
+
+# Locally simulate CI pipeline
+.\maven\mvn\bin\mvn.cmd clean verify  # Windows
+./maven/mvn/bin/mvn clean verify  # Linux/macOS
+
+# Run coverage report
+.\maven\mvn\bin\mvn.cmd jacoco:report  # Windows
+./maven/mvn/bin/mvn jacoco:report  # Linux/macOS
 # View: target/site/jacoco/index.html
+
+# Docker deployment
+docker-compose -f deployment/docker-compose.yml up -d adventure-server  # Start production server
+docker-compose -f deployment/docker-compose.yml --profile staging up -d  # Start prod + staging
+docker-compose -f deployment/docker-compose.yml down  # Stop all services
 ```
+
+**Test Results:**
+- ✅ **CI Workflow:** Multi-platform build (Linux + Windows), coverage reporting, artifact upload
+- ✅ **Nightly Tests:** Determinism tests, regression tests, large world generation (512x512)
+- ✅ **Docker Build:** Multi-stage build, health checks, volume mounts
+- ✅ **Deployment Scripts:** Cross-platform scripts with configurable options
+- ✅ **Coverage Threshold:** 70% minimum enforced by JaCoCo plugin
 
 **References:**
 - Design: `docs/architecture_design.md` → CI/CD Strategy
 - Testing: `docs/testing_plan.md` → CI Integration
+- Deployment: `deployment/DEPLOYMENT.md` → Comprehensive deployment guide (Windows, Linux, Docker, cloud)
+- Summary: `archive/PHASE_1.10_SUMMARY.md` → Complete implementation summary
 
 ---
 
@@ -664,7 +710,7 @@ telnet localhost 8080
 
 ### Staging/Production (Docker)
 ```dockerfile
-# Dockerfile (to be created in Phase 1.10)
+# Dockerfile (see deployment/Dockerfile)
 FROM eclipse-temurin:21-jre
 COPY target/adventure-0.1.0-SNAPSHOT.jar /app/adventure.jar
 EXPOSE 8080
@@ -673,7 +719,7 @@ CMD ["java", "-jar", "/app/adventure.jar", "--server", "--port", "8080"]
 
 ```bash
 # Build Docker image
-docker build -t adventure:0.1.0 .
+docker build -f deployment/Dockerfile -t adventure:0.1.0 .
 
 # Run container
 docker run -p 8080:8080 adventure:0.1.0
@@ -756,7 +802,7 @@ cp saves/backups/world_backup_1.json saves/world.json
 ## Status Summary
 
 ### Current Phase: MVP Phase 1 (Foundation)
-- **Overall Progress:** ~80% complete
+- **Overall Progress:** 100% complete ✅ **MVP PHASE 1 COMPLETE**
   - **World Generation: 100% ✅ PHASE COMPLETE**
     - Tectonic plates: Complete with 12 tests passing
     - Elevation & temperature: Complete with layered noise
@@ -808,8 +854,22 @@ cp saves/backups/world_backup_1.json saves/world.json
     - Checksum validation: Complete with SHA-256 + corruption detection
     - Migration registry: Complete with YAML-based migration path tracking
     - **Total: 15 tests passing (SaveManager, BackupManager, SchemaVersionManager)**
-  - Multiplayer: 0% (design complete, not implemented)
-  - CI/CD: 60% (GitHub Actions workflow created, coverage reporting pending)
+  - **Multiplayer & Networking: 100% ✅ PHASE 1.9 COMPLETE**
+    - Authoritative server: Complete with action validation and processing
+    - Text-based client: Complete with CLI interface
+    - JWT authentication: Complete with 24-hour token expiry
+    - Conflict resolution: Complete with resource locking and timestamp ordering
+    - Server-side validation: Complete for all action types
+    - **Total: 86 tests passing (Server: 14, Auth: 21, Conflict: 16, Validation: 35)**
+  - **CI/CD & Deployment: 100% ✅ PHASE 1.10 COMPLETE**
+    - GitHub Actions workflow: Complete with multi-platform builds (Linux + Windows)
+    - Coverage reporting: Complete with JaCoCo plugin (70% threshold)
+    - Nightly integration tests: Complete with determinism and performance validation
+    - Docker deployment: Complete with multi-stage Dockerfile and docker-compose
+    - Cross-platform scripts: Complete with deploy.ps1 (Windows) and deploy.sh (Linux/macOS)
+    - Executable JAR: Complete with Maven Shade plugin (fat JAR with all dependencies)
+    - Deployment documentation: Complete with comprehensive DEPLOYMENT.md guide
+    - **Deliverables: 8/8 complete (100%)**
 
 ### Next Milestones
 1. **Complete Multiplayer MVP (Target: Q1 2026)**
@@ -836,7 +896,8 @@ cp saves/backups/world_backup_1.json saves/world.json
 - **Phase 1.6 (Societies & Clans):** 55 tests ✅
 - **Phase 1.7 (Stories & Events):** 83 tests ✅
 - **Phase 1.8 (Persistence):** 15 tests ✅
-- **Total:** 448 tests ✅
+- **Phase 1.9 (Multiplayer & Networking):** 86 tests ✅
+- **Total:** 534 tests ✅
 
 ---
 

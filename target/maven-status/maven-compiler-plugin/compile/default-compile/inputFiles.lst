@@ -1,9 +1,12 @@
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\network\AuthenticationManager.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\network\Client.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\region\Region.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\story\Event.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\persistence\SaveManager.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\AccessLevel.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\ContestedOwnership.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\crafting\CraftingCategory.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\network\PlayerSession.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\persistence\SchemaVersionManager.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\Game.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\persistence\BackupManager.java
@@ -25,6 +28,7 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\items\I
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\world\River.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\items\ItemPrototype.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\world\RandomUtil.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\network\ActionValidator.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\character\Race.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\story\EventCategory.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\story\StoryGenerator.java
@@ -40,6 +44,7 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\craftin
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\world\RegionalFeature.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\RoomCategory.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\StructureType.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\network\ConflictResolver.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\story\StoryType.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\society\Clan.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\items\Item.java
@@ -47,13 +52,16 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structu
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\TransferType.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\Permission.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\crafting\ItemRegistry.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\network\Server.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\persistence\WorldSerializer.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\crafting\CraftingSystem.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\story\Story.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\network\Player.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\OwnershipTransferSystem.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\region\ResourceNode.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\Structure.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\society\Diplomacy.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\network\PlayerAction.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\story\SaturationManager.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\society\ClanType.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\world\Biome.java

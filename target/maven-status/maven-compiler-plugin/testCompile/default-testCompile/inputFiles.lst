@@ -4,7 +4,9 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\TraitTe
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\WorldGenTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\CraftingTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\PlateTest.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\ServerTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\TaxationTest.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\ConflictTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\ItemTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\CharacterTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\StoryGeneratorTest.java
@@ -13,9 +15,11 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\BiomeTe
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\RegionTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\EventTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\StoryTest.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\AuthTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\RegionSimulatorTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\RiverTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\SkillTest.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\ValidationTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\NPCTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\PersistenceTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\ClanTest.java
