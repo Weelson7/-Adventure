@@ -83,6 +83,9 @@ public class Character {
     // Simulation tracking
     private long lastUpdatedTick;
     
+    // Schema versioning for persistence
+    private int schemaVersion = 1;
+    
     /**
      * Create a new character with base stats from race.
      * 
@@ -453,5 +456,9 @@ public class Character {
     
     public void setLastUpdatedTick(long lastUpdatedTick) {
         this.lastUpdatedTick = lastUpdatedTick;
+    }
+    
+    public int getSchemaVersion() {
+        return schemaVersion;
     }
 }

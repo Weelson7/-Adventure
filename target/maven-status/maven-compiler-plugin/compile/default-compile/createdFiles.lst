@@ -60,6 +60,7 @@ org\adventure\region\ResourceNode$ResourceType.class
 org\adventure\world\Plate.class
 org\adventure\character\Skill$Category.class
 org\adventure\world\River$TileCoord.class
+org\adventure\story\StoryGenerator$1.class
 org\adventure\region\Region$RegionState.class
 org\adventure\structure\Structure$Builder.class
 org\adventure\crafting\CraftingRecipe$Builder.class

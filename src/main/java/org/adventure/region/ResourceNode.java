@@ -12,6 +12,7 @@ public class ResourceNode {
     private final double rMax;        // Maximum resource quantity
     private final double regenRate;   // Regeneration rate per second
     private double currentQuantity;
+    private int schemaVersion = 1;
 
     public enum ResourceType {
         WOOD,        // Renewable, fast regeneration
@@ -103,5 +104,9 @@ public class ResourceNode {
      */
     public boolean isFull() {
         return currentQuantity >= rMax;
+    }
+    
+    public int getSchemaVersion() {
+        return schemaVersion;
     }
 }

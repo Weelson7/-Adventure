@@ -17,6 +17,7 @@ public class Region {
     private RegionState state;
     private final List<ResourceNode> resourceNodes;
     private int npcCount;
+    private int schemaVersion = 1;
 
     public enum RegionState {
         ACTIVE,      // Full simulation (players nearby)
@@ -113,5 +114,9 @@ public class Region {
         int minY = centerY - height / 2;
         int maxY = centerY + height / 2;
         return x >= minX && x < maxX && y >= minY && y < maxY;
+    }
+    
+    public int getSchemaVersion() {
+        return schemaVersion;
     }
 }
