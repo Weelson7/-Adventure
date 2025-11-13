@@ -91,13 +91,22 @@ See **`deployment/DEPLOYMENT.md`** for comprehensive deployment instructions inc
 
 ## Documentation structure (high-level)
 
+### Build Guides
+- **`BUILD.md`** — Phase 1 (MVP) comprehensive build guide with all 10 sub-phases
+- **`BUILD-GAMEPLAY.md`** — Gameplay loop and UI development guide (character creation, combat, inventory, quests)
+- **`BUILD_PHASE2.md`** — Phase 2 advanced systems guide (magic, diplomacy, economy, AI, modding)
+- **`QUICKREF.md`** — Quick reference card for commands and workflows
+
+### Core Design Documentation
 All design artifacts live in `docs/`. Key files:
 
 - `docs/design_decisions.md` — centralized, authoritative decisions
 - `docs/specs_summary.md` — actionable defaults and short contracts (tick rates, tax defaults, event decay, mod sandbox caps)
 - `docs/open_questions.md` — triaged open questions with owners
-- `docs/TO_FIX.md` — implementation tracker
-- Feature docs (each gives specification, data models, algorithms, edge cases):
+- `docs/TO_FIX.md` — implementation tracker (all 42 items complete ✅)
+
+### Feature Specifications
+Feature docs (each gives specification, data models, algorithms, edge cases):
 	- `world_generation.md`
 	- `biomes_geography.md`
 	- `structures_ownership.md`
@@ -107,6 +116,10 @@ All design artifacts live in `docs/`. Key files:
 	- `stories_events.md`
 	- `economy_resources.md`
 	- `persistence_versioning.md`
+
+### Deployment & Operations
+- **`deployment/DEPLOYMENT.md`** — Comprehensive deployment guide (Windows, Linux, Docker, cloud)
+- **`docs/operator_runbook.md`** — Recovery, migration, and backup procedures
 
 If you change any design, update `docs/design_decisions.md` and add a short note linking to affected files.
 

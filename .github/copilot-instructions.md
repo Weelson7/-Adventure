@@ -15,20 +15,34 @@
   - `character/` — Character, NPC, Trait, Skill, Race classes
   - `items/` — Item, ItemPrototype, ItemCategory, ItemRarity
   - `crafting/` — CraftingSystem, CraftingRecipe, CraftingProficiency
-- `src/test/java/org/adventure/` — JUnit 5 tests (146 tests passing as of Phase 1.4)
+- `src/test/java/org/adventure/` — JUnit 5 tests (534 tests passing as of Phase 1.10)
 - `docs/` — design docs, specs, operator guides (**source of truth**)
   - `design_decisions.md` — canonical architecture decisions
   - `specs_summary.md` — defaults, formulas, tick rates, event decay, mod sandbox caps
   - `TO_FIX.md` — implementation tracker (42 items complete ✅)
-  - `BUILD.md` — comprehensive build guide, phases, quality gates, commands
+  - `BUILD.md` — comprehensive Phase 1 build guide, phases, quality gates, commands
+- **Build Guides:**
+  - `BUILD.md` — **Phase 1 (MVP)** backend systems guide (100% complete ✅)
+  - `BUILD-GAMEPLAY.md` — **Gameplay & UI** development guide (0% complete, next focus)
+  - `BUILD_PHASE2.md` — **Phase 2** advanced systems guide (0% complete, post-MVP)
+  - `.github/copilot-instructions-build-guides.md` — **Build guides overview** (read this!)
 - `doc-src/` — **per-file documentation mirror** (markdown docs for every Java class/test)
   - Structure mirrors `src/`: `doc-src/main/java/org/adventure/<Class>.md`, `doc-src/test/java/org/adventure/<TestClass>.md`
   - Use these for detailed API docs, design rationale, and implementation notes for specific classes
   - 84+ markdown files documenting classes like `Game.md`, `WorldGen.md`, `Character.md`, etc.
+- `deployment/` — deployment scripts and Docker configuration
+  - `deploy.ps1` / `deploy.sh` — cross-platform deployment scripts
+  - `Dockerfile` — multi-stage Docker build
+  - `docker-compose.yml` — container orchestration
+  - `DEPLOYMENT.md` — comprehensive deployment guide
 - `pom.xml` — Maven config (Java 21, JUnit 5.9.3, Jackson 2.15.2)
 
 ## Developer Workflow
-1. **Pick a task** from `docs/TO_FIX.md` or `docs/BUILD.md` (current phase: MVP Phase 1)
+1. **Pick a task:**
+   - **For Phase 1 (backend):** See `BUILD.md` (100% complete ✅)
+   - **For Gameplay/UI:** See `BUILD-GAMEPLAY.md` (next focus, 0% complete)
+   - **For Phase 2 (advanced):** See `BUILD_PHASE2.md` (post-MVP, 0% complete)
+   - **Quick overview:** Read `.github/copilot-instructions-build-guides.md`
 2. **Branch naming:** `feature/<short-description>`
 3. **Implementation:** Add code to `src/main/java/org/adventure/<module>/`, tests to `src/test/java/`
 4. **Testing requirements:**
@@ -36,7 +50,7 @@
    - Coverage: 70%+ for core, 85%+ for persistence/critical logic
    - All tests must pass before PR: `.\maven\mvn\bin\mvn.cmd test`
 5. **Documentation:** Update `docs/design_decisions.md` for design changes, link affected files
-6. **Quality gates:** See `BUILD.md` for phase-specific gates (determinism, caps, performance)
+6. **Quality gates:** See appropriate build guide (`BUILD.md`, `BUILD-GAMEPLAY.md`, or `BUILD_PHASE2.md`) for phase-specific gates
 
 ## Build & Run Commands
 ```powershell
@@ -111,11 +125,22 @@ java -cp target\adventure-0.1.0-SNAPSHOT.jar org.adventure.Game --interactive
 
 ## Important Gotchas
 - **`doc-src/` is for documentation only** — it mirrors `src/` structure with markdown files, not code
+- **Three build guides, different purposes:**
+  - `BUILD.md` = Phase 1 backend (100% complete ✅)
+  - `BUILD-GAMEPLAY.md` = Gameplay/UI (0% complete, NEXT FOCUS)
+  - `BUILD_PHASE2.md` = Phase 2 advanced systems (0% complete, post-MVP)
+- **Game has complete backend but NO UI yet** — See BUILD-GAMEPLAY.md for the gap
 - **Always update `docs/design_decisions.md`** when changing architecture
-- **Check `BUILD.md` quality gates** before marking phase complete
+- **Check appropriate build guide quality gates** before marking phase complete
 - **Run determinism tests** after any generation code change
 - **Maven wrapper:** Use `.\maven\mvn\bin\mvn.cmd` on Windows, `./maven/mvn/bin/mvn` on Linux/macOS
 - **Per-class docs:** Check `doc-src/main/java/org/adventure/<module>/<Class>.md` for detailed API docs
+- **Deployment files in `deployment/` folder** — scripts, Dockerfile, docker-compose, guides
 ---
 
-**For detailed phase information, quality gates, and troubleshooting, see `BUILD.md`. For design rationale, see `docs/design_decisions.md` and `docs/specs_summary.md`.**
+**For detailed phase information, quality gates, and troubleshooting:**
+- **Phase 1 (backend):** See `BUILD.md` — 100% complete ✅
+- **Gameplay/UI:** See `BUILD-GAMEPLAY.md` — 0% complete, next focus
+- **Phase 2 (advanced):** See `BUILD_PHASE2.md` — 0% complete, post-MVP
+- **Build guides overview:** See `.github/copilot-instructions-build-guides.md`
+- **Design rationale:** See `docs/design_decisions.md` and `docs/specs_summary.md`

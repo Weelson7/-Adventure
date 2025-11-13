@@ -11,11 +11,30 @@
 This document is the **central guide** for building the !Adventure game. It tracks development phases, defines quality gates, provides build/test commands, and aligns with the MVP prioritization matrix in `docs/grand_plan.md`.
 
 ### Quick Links
-- [Grand Plan & MVP Matrix](docs/grand_plan.md) — Strategic roadmap and feature prioritization
-- [Architecture Design](docs/architecture_design.md) — Technical architecture and system contracts
-- [Testing Plan](docs/testing_plan.md) — Test framework, coverage goals, and determinism checks
-- [To Fix Tracker](docs/TO_FIX.md) — Implementation tracker (all 42 items complete ✅)
-- [Open Questions](docs/open_questions.md) — Unresolved design questions requiring decisions
+- **Build Guides:**
+  - [Gameplay Build Guide](BUILD-GAMEPLAY.md) — UI and player experience development
+  - [Phase 2 Build Guide](BUILD_PHASE2.md) — Advanced systems development (magic, diplomacy, economy)
+- **Design Documentation:**
+  - [Grand Plan & MVP Matrix](docs/grand_plan.md) — Strategic roadmap and feature prioritization
+  - [Architecture Design](docs/architecture_design.md) — Technical architecture and system contracts
+  - [Testing Plan](docs/testing_plan.md) — Test framework, coverage goals, and determinism checks
+- **Project Tracking:**
+  - [To Fix Tracker](docs/TO_FIX.md) — Implementation tracker (all 42 items complete ✅)
+  - [Open Questions](docs/open_questions.md) — Unresolved design questions requiring decisions
+
+---
+
+## Related Build Guides
+
+This guide covers **Phase 1 (MVP)** — the backend foundation. For other development areas:
+
+- **[BUILD-GAMEPLAY.md](BUILD-GAMEPLAY.md)** — Gameplay loop and user interface development
+  - Character creation, movement, combat, inventory, quests, tutorials
+  - Covers the gap between backend systems and playable game
+  
+- **[BUILD_PHASE2.md](BUILD_PHASE2.md)** — Phase 2 advanced systems development
+  - Magic system, advanced diplomacy, dynamic economy, NPC AI
+  - Modding support, performance optimization, content creation
 
 ---
 
@@ -585,17 +604,23 @@ docker-compose -f deployment/docker-compose.yml down  # Stop all services
 
 **Goal:** Add complex systems (magic, advanced diplomacy, legacy effects, dynamic economy) and polish gameplay.
 
+**Status:** 📋 Planning — See [BUILD_PHASE2.md](BUILD_PHASE2.md) for comprehensive Phase 2 build guide
+
 **High Priority Features:**
-- [ ] Magic system (rune-based spells, mana pools, backlash mechanics)
-- [ ] Crafting proficiency progression (XP curves, specializations)
-- [ ] Full diplomacy system (secret agendas, crises, influence)
-- [ ] Legacy effects for items/structures (evolution, story-driven bonuses)
-- [ ] Event propagation (cross-region spread, decay formulas, saturation controls)
-- [ ] Dynamic economy (supply/demand pricing, trade routes)
+- [ ] Magic system (rune-based spells, mana pools, backlash mechanics) — Phase 2.1
+- [ ] Advanced diplomacy (secret agendas, crises, influence) — Phase 2.2
+- [ ] Crafting proficiency progression (XP curves, specializations) — Phase 2.3
+- [ ] Legacy effects for items/structures (evolution, story-driven bonuses) — Phase 2.4
+- [ ] Dynamic economy (supply/demand pricing, trade routes) — Phase 2.5
+- [ ] Event propagation enhancement (decay formulas, saturation controls) — Phase 2.7
 
 **Medium Priority Features:**
-- [ ] Advanced NPC AI (pathfinding, behavior trees)
-- [ ] Player-created content tools (story editor, custom presets)
+- [ ] Advanced NPC AI (pathfinding, behavior trees) — Phase 2.6
+- [ ] Performance optimization (larger worlds, more players) — Phase 2.8
+- [ ] Modding support & tools (mod framework, content editors) — Phase 2.9
+- [ ] Content creation & balancing (quests, NPCs, items, tuning) — Phase 2.10
+
+**Next Step:** Review [BUILD_PHASE2.md](BUILD_PHASE2.md) for detailed implementation plan
 - [ ] Mod support (data-only mods first, then sandboxed scripted mods)
 - [ ] Visual enhancements (map rendering, debug visualization tools)
 

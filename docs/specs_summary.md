@@ -80,8 +80,76 @@ Log and auto-disable mods that exceed limits; require sign-off for high-privileg
 ## Crafting Progression & Magic Defaults
 
 - Crafting tiers and XP: use the tiers documented in `docs/objects_crafting_legacy.md`. Defaults: Novice (0-99xp), Apprentice (100-299), Journeyman (300-599), Expert (600-999), Master (1000+).
-- Mana formula (canonical): `maxMana = baseMana + (castingStat * manaPerStat)`; defaults: `baseMana = 10`, `manaPerStat = 2`.
-- Backlash probability: clamp denominator to at least 1 to avoid divide-by-zero; ensure `castingStat >= 1` at runtime.
+
+### Magic System (Phase 2.1)
+
+**Rune Categories:**
+- 15 Type Runes (spell verbs): Projectile, Area, Beam, Buff, Summon, Shield, Heal, Curse, Trap, Channel, Conjure, Burst, Strike, Ward, Ritual
+- 28 Element Runes (7 base + 21 multi-element combos): 
+  - Base: Null, Fire, Water, Earth, Wind, Light, Darkness
+  - 2-element combos: Fire+Wind=Lightning, Water+Wind=Ice, Null+Light=Arcane, etc. (21 total)
+  - 3-5 element combos: Fire+Wind+Null=Plasma Storm, Fire+Water+Earth+Wind+Light=Nature's Wrath, etc.
+- 12 Modifier Runes (spell adjectives): Amplify/Weaken, Swift/Slow, Extend/Shorten, Prolong/Hasten, Efficient/Reckless, Stabilize/Volatile
+- **Total: 55 runes, 10,000+ spell combinations**
+
+**Spell Grammar:**
+- Syntax: `[TYPE] + [ELEMENT_1 to 5] + [MODIFIER_1 to 2 (optional)]`
+- Spell length: 2-8 runes total (1 Type + 1-5 Elements + 0-2 Modifiers)
+- Complexity scaling: Longer incantations = exponentially higher mana cost + lower stability
+
+**Mana:**
+- Formula (canonical): `maxMana = baseMana + (castingStat * manaPerStat)`
+- Defaults: `baseMana = 10`, `manaPerStat = 2`
+- Mana cost multiplier by spell length:
+  - 2 runes: 1.0x
+  - 3 runes: 1.15x
+  - 4 runes: 1.5x
+  - 5 runes: 2.05x
+  - 6 runes: 2.8x
+  - 7 runes: 3.75x
+  - 8 runes: 4.9x (extremely expensive!)
+- Learned spell bonus: -20% mana cost
+- Proficiency bonus: Up to -30% at Master tier (1000 proficiency)
+
+**Stability & Backlash:**
+- Base stability: Average of all rune stabilities (0-100 scale)
+- Penalties:
+  - Opposing elements (Fire+Water, Light+Darkness): -20 per pair
+  - Multi-element complexity: 3 elements = -10, 4 = -25, 5 = -40
+  - Complexity: -5 per rune above 4 (8-rune spell = -20 penalty)
+  - Manual casting (unlearned): -20
+  - Volatile modifier: -30
+- Bonuses:
+  - Compatible elements (Fire+Wind, Water+Wind, Null+Light): +5 to +10 per pair
+  - Stabilize modifier: +30
+  - Proficiency: +1 per 10 points (max +100 at 1000 proficiency)
+  - Learned spell: +15
+- Backlash probability: `(100 - finalStability) / 100 * backlashMultiplier` (default multiplier = 1.0)
+- Backlash severity: Minor (50% refund) → Moderate (15% HP) → Major (40% HP + debuff) → Catastrophic (60% HP + area damage)
+
+**Spell Learning:**
+- Manual casting (unlearned): 2x cast time, 10-30% error chance, -20 stability, full mana cost
+- Learned casting (mastered): Normal cast time, 0% error, +15 stability, -20% mana cost
+- Learning methods:
+  - Mentor teaching: Instant (gold/quests/reputation cost)
+  - Spell scrolls: Instant (consume scroll)
+  - Repetition: 50 successful casts OR 100 total attempts
+  - Scholarly study: 1 hour study time
+
+**Element Compatibility:**
+- Compatible pairs (natural affinity): +5 to +10 stability
+  - Water + Wind = Ice, Earth + Water = Nature, Fire + Light = Radiance, Null + Light = Arcane
+- Opposing pairs (conflict): -15 to -20 stability
+  - Fire + Water = Steam, Light + Darkness = Twilight
+- Neutral pairs: 0 to -5 stability
+
+**Spell Caps (Balance):**
+- Max damage: 200% of base (prevents one-shots)
+- Max range: 50m (prevents off-screen kills)
+- Max duration: 5 minutes (prevents permanent buffs)
+- Max mana cost: 200 (prevents unusable spells)
+
+See `docs/magic_system.md` for complete specifications.
 
 ## Operator Runbook (pointer)
 
