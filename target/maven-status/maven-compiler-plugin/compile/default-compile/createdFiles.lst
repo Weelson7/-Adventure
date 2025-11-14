@@ -3,7 +3,6 @@ org\adventure\network\ConflictResolver$ConflictResolution$ResolutionStatus.class
 org\adventure\network\ConflictResolver$ConflictResolution.class
 org\adventure\persistence\SchemaVersionManager.class
 org\adventure\character\Character$CoreStat.class
-org\adventure\region\RegionSimulator.class
 org\adventure\character\NPC$1.class
 org\adventure\society\Clan$Builder.class
 org\adventure\region\ResourceNode.class
@@ -60,7 +59,6 @@ org\adventure\npc\NPCLifecycleManager.class
 org\adventure\character\Skill$ProficiencyTier.class
 org\adventure\quest\QuestObjective$Builder.class
 org\adventure\network\Client.class
-org\adventure\network\PlayerAction.class
 org\adventure\prophecy\ProphecyGenerator.class
 org\adventure\crafting\CraftingRecipe.class
 org\adventure\quest\Quest$Builder.class
@@ -84,7 +82,6 @@ org\adventure\network\ActionValidator.class
 org\adventure\world\RandomUtil.class
 org\adventure\story\StoryGenerator.class
 org\adventure\structure\Room$Builder.class
-org\adventure\network\PlayerAction$Builder.class
 org\adventure\society\Diplomacy.class
 org\adventure\settlement\VillageType.class
 org\adventure\network\Server.class
@@ -111,7 +108,6 @@ org\adventure\world\River$Tile.class
 org\adventure\story\Event$Builder.class
 org\adventure\society\ClanType.class
 org\adventure\network\ActionValidator$ValidationResult.class
-org\adventure\network\PlayerAction$ActionType.class
 org\adventure\npc\Gender.class
 org\adventure\settlement\Village.class
 org\adventure\network\PlayerAction$ActionStatus.class
@@ -124,7 +120,6 @@ org\adventure\structure\EntranceSide.class
 org\adventure\network\PlayerSession.class
 org\adventure\npc\NPCJob.class
 org\adventure\structure\TransferType.class
-org\adventure\region\Region.class
 org\adventure\world\RegionalFeature.class
 org\adventure\prophecy\Prophecy.class
 org\adventure\settlement\RoadTile$Builder.class
@@ -153,4 +148,3 @@ org\adventure\character\NPC.class
 org\adventure\character\Skill$Category.class
 org\adventure\story\StoryGenerator$1.class
 org\adventure\quest\QuestObjective.class
-org\adventure\region\Region$RegionState.class

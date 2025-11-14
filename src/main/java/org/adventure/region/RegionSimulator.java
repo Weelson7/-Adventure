@@ -1,5 +1,12 @@
 package org.adventure.region;
 
+import org.adventure.npc.NPCLifecycleManager;
+import org.adventure.simulation.ClanExpansionSimulator;
+import org.adventure.simulation.StructureLifecycleManager;
+import org.adventure.simulation.QuestDynamicGenerator;
+import org.adventure.settlement.VillageManager;
+import org.adventure.world.Biome;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +15,15 @@ import java.util.Map;
 /**
  * Manages the tick-driven simulation of regions in the game world.
  * Handles active vs background simulation with different tick rates.
+ * 
+ * <p>Phase 1.10.3: Integrated with dynamic world simulation systems:
+ * <ul>
+ *   <li>NPC lifecycle (aging, marriage, reproduction, death)</li>
+ *   <li>Clan expansion (NPC-driven building, diplomacy, war, trade)</li>
+ *   <li>Structure lifecycle (disasters, neglect, conversion to ruins)</li>
+ *   <li>Quest generation (dynamic from world events)</li>
+ *   <li>Village detection and management</li>
+ * </ul>
  */
 public class RegionSimulator {
     private final Map<Integer, Region> regions;
@@ -15,6 +31,19 @@ public class RegionSimulator {
     private final double activeTickRateMultiplier;
     private final double backgroundTickRateMultiplier;
     private long currentTick;
+    
+    // Phase 1.10.3: Simulation managers
+    private final NPCLifecycleManager npcLifecycleManager;
+    private final ClanExpansionSimulator clanExpansionSimulator;
+    private final StructureLifecycleManager structureLifecycleManager;
+    private final QuestDynamicGenerator questDynamicGenerator;
+    private final VillageManager villageManager;
+    
+    // World data (needed for placement/pathfinding)
+    private Biome[][] biomes;
+    private double[][] elevation;
+    private int worldWidth;
+    private int worldHeight;
 
     // Default configuration from specs_summary.md
     public static final double DEFAULT_TICK_LENGTH = 1.0; // 1 second
@@ -31,6 +60,31 @@ public class RegionSimulator {
         this.activeTickRateMultiplier = activeMultiplier;
         this.backgroundTickRateMultiplier = backgroundMultiplier;
         this.currentTick = 0;
+        
+        // Phase 1.10.3: Initialize simulation managers
+        this.npcLifecycleManager = new NPCLifecycleManager();
+        this.clanExpansionSimulator = new ClanExpansionSimulator();
+        this.structureLifecycleManager = new StructureLifecycleManager();
+        this.questDynamicGenerator = new QuestDynamicGenerator();
+        this.villageManager = new VillageManager();
+    }
+    
+    /**
+     * Set world data for simulation (needed for placement rules and pathfinding).
+     * 
+     * @param biomes World biome map
+     * @param elevation World elevation map
+     * @param worldWidth World width in tiles
+     * @param worldHeight World height in tiles
+     */
+    public void setWorldData(Biome[][] biomes, double[][] elevation, int worldWidth, int worldHeight) {
+        this.biomes = biomes;
+        this.elevation = elevation;
+        this.worldWidth = worldWidth;
+        this.worldHeight = worldHeight;
+        
+        // Initialize clan expansion simulator with elevation data
+        this.clanExpansionSimulator.setWorldData(elevation);
     }
 
     /**
@@ -111,11 +165,63 @@ public class RegionSimulator {
 
     /**
      * Process an active region with full simulation.
+     * 
+     * <p>Phase 1.10.3: Integrated dynamic world simulation:
+     * <ol>
+     *   <li>Resource regeneration (existing)</li>
+     *   <li>NPC lifecycle (aging, marriage, reproduction, death)</li>
+     *   <li>Clan expansion (NPC-led only, player clans skip)</li>
+     *   <li>Structure lifecycle (disasters, neglect, ruin conversion)</li>
+     *   <li>Dynamic quest generation (from world events)</li>
+     *   <li>Village detection and promotion</li>
+     * </ol>
      */
     private void processActiveRegion(Region region) {
         double deltaTime = tickLength * activeTickRateMultiplier;
         region.regenerateResources(currentTick, deltaTime);
-        // TODO: Process NPCs, events, structures (Phase 1.3+)
+        
+        // Phase 1.10.3: Dynamic world simulation
+        if (biomes != null && elevation != null) {
+            // 1. NPC lifecycle (aging, marriage, reproduction, death)
+            npcLifecycleManager.simulateTick(
+                region.getNPCs(),
+                region.getStructures(),
+                currentTick
+            );
+            
+            // 2. Clan expansion (NPC-led clans only)
+            clanExpansionSimulator.simulateTick(
+                region.getClans(),
+                region.getNPCs(),
+                region.getStructures(),
+                region.getRoads(),
+                biomes,
+                elevation,
+                worldWidth,
+                worldHeight,
+                currentTick
+            );
+            
+            // 3. Structure lifecycle (disasters, neglect, ruins)
+            structureLifecycleManager.simulateTick(
+                region.getStructures(),
+                region.getClans(),
+                currentTick
+            );
+            
+            // 4. Dynamic quest generation (from world events)
+            var newQuests = questDynamicGenerator.generateQuestsFromEvents(
+                region.getStructures(),
+                region.getClans(),
+                region.getStories(),
+                currentTick
+            );
+            region.addQuests(newQuests);
+            
+            // 5. Village detection and management
+            var villages = villageManager.detectVillages(region.getStructures());
+            region.setVillages(villages);
+        }
     }
 
     /**

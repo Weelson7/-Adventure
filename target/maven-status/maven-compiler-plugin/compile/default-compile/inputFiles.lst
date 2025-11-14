@@ -5,7 +5,9 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\prophec
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\ContestedOwnership.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\network\PlayerSession.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\persistence\BackupManager.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\simulation\StructureLifecycleManager.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\world\Plate.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\simulation\QuestDynamicGenerator.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\story\StoryStatus.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\StructurePlacementRules.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\Room.java
@@ -87,6 +89,7 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\craftin
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\network\Player.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\quest\Quest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\npc\package-info.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\simulation\ClanExpansionSimulator.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\settlement\VillageType.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\settlement\SettlementGenerator.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\main\java\org\adventure\structure\Structure.java
