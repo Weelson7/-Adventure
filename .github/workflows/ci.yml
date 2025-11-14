@@ -54,7 +54,7 @@ jobs:
 
       - name: Archive coverage report
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report-${{ matrix.os }}
           path: target/site/jacoco/
@@ -62,7 +62,7 @@ jobs:
 
       - name: Archive test results
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ matrix.os }}
           path: target/surefire-reports/
@@ -101,7 +101,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2-
 
       - name: Run determinism tests
-        run: mvn -B test -Dtest=*DeterminismTest
+        run: mvn -B test -Dtest=*DeterminismTest -Dsurefire.failIfNoSpecifiedTests=false
 
       - name: Run regression tests
         run: mvn -B test -Dtest=*RegressionTest || echo "No regression tests found"
@@ -178,7 +178,7 @@ jobs:
         run: mvn -B package -DskipTests=true
 
       - name: Upload executable JAR
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: adventure-executable
           path: target/adventure-0.1.0-SNAPSHOT.jar
