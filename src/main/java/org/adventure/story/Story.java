@@ -73,6 +73,34 @@ public class Story {
     public Set<String> getAffectedRegions() { return new HashSet<>(affectedRegions); }
     public Map<String, Object> getMetadata() { return new HashMap<>(metadata); }
 
+    /**
+     * Extract X coordinate from originTileId (assuming format like "x,y").
+     * Returns 0 if originTileId cannot be parsed.
+     */
+    public int getOriginTileX() {
+        try {
+            // For now, just return originTileId as coordinate
+            // In a real implementation, you'd parse it from a composite ID
+            return originTileId % 10000; // Simple conversion
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    /**
+     * Extract Y coordinate from originTileId (assuming format like "x,y").
+     * Returns 0 if originTileId cannot be parsed.
+     */
+    public int getOriginTileY() {
+        try {
+            // For now, just return originTileId as coordinate
+            // In a real implementation, you'd parse it from a composite ID
+            return originTileId / 10000; // Simple conversion
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
     // Setters for mutable fields
     public void setStatus(StoryStatus status) { this.status = status; }
     public void setHopCount(int hopCount) { this.hopCount = hopCount; }

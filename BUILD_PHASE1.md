@@ -972,7 +972,7 @@ Closes #42
 - [ ] All tests pass (`mvn test`)
 - [ ] Code coverage meets thresholds (70% for new code)
 - [ ] Determinism tests added for new procedural systems
-- [ ] Documentation updated (`BUILD.md`, relevant `docs/*.md`)
+- [ ] Documentation updated (`BUILD_PHASE1.md`, relevant `docs/*.md`)
 - [ ] CHANGELOG.md updated (if user-facing change)
 
 ---
@@ -988,13 +988,13 @@ While Phase 1.1-1.10 completed all backend systems, **a critical gap was discove
 
 **Solution:** Phase 1.10.x adds living world features:
 - ✅ Initial clans, settlements, prophecies, quests at worldgen
+- ✅ Named NPC system (with homes, jobs, marriage, reproduction)
 - ✅ Village/city formation from structure clusters
 - ✅ Road networks connecting settlements
 - ✅ Dynamic clan expansion & structure lifecycle
 - ✅ Living world simulation (builds, grows, destroys)
 
-**👉 See [BUILD_PHASE1.10.x.md](BUILD_PHASE1.10.x.md) for implementation guide**  
-**👉 See [PHASE1.10_CRITICAL_SUMMARY.md](PHASE1.10_CRITICAL_SUMMARY.md) for quick overview**
+**👉 See [BUILD_PHASE1.10.x.md](BUILD_PHASE1.10.x.md) for complete implementation guide**
 
 ---
 
@@ -1044,4 +1044,4 @@ While Phase 1.1-1.10 completed all backend systems, **a critical gap was discove
 
 ---
 
-**End of BUILD.md**
+**End of BUILD_PHASE1.md**

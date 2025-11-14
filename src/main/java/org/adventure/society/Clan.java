@@ -23,7 +23,10 @@ public class Clan {
     private final String name;
     private final ClanType type;
     private final List<String> members;
+    private final String leaderId;
     private final double treasury;
+    private final double centerX;
+    private final double centerY;
     private final Map<String, RelationshipRecord> relationships;
     private final long foundingTick;
     private final long lastActiveTick;
@@ -35,7 +38,10 @@ public class Clan {
             @JsonProperty("name") String name,
             @JsonProperty("type") ClanType type,
             @JsonProperty("members") List<String> members,
+            @JsonProperty("leaderId") String leaderId,
             @JsonProperty("treasury") double treasury,
+            @JsonProperty("centerX") double centerX,
+            @JsonProperty("centerY") double centerY,
             @JsonProperty("relationships") Map<String, RelationshipRecord> relationships,
             @JsonProperty("foundingTick") long foundingTick,
             @JsonProperty("lastActiveTick") long lastActiveTick,
@@ -44,7 +50,10 @@ public class Clan {
         this.name = Objects.requireNonNull(name, "Clan name cannot be null");
         this.type = Objects.requireNonNull(type, "Clan type cannot be null");
         this.members = List.copyOf(Objects.requireNonNull(members, "Members list cannot be null"));
+        this.leaderId = leaderId;
         this.treasury = treasury;
+        this.centerX = centerX;
+        this.centerY = centerY;
         this.relationships = relationships != null ? Map.copyOf(relationships) : Map.of();
         this.foundingTick = foundingTick;
         this.lastActiveTick = lastActiveTick;
@@ -63,7 +72,10 @@ public class Clan {
     public String getName() { return name; }
     public ClanType getType() { return type; }
     public List<String> getMembers() { return members; }
+    public String getLeaderId() { return leaderId; }
     public double getTreasury() { return treasury; }
+    public double getCenterX() { return centerX; }
+    public double getCenterY() { return centerY; }
     public Map<String, RelationshipRecord> getRelationships() { return relationships; }
     public long getFoundingTick() { return foundingTick; }
     public long getLastActiveTick() { return lastActiveTick; }
@@ -249,7 +261,10 @@ public class Clan {
         private String name;
         private ClanType type = ClanType.CLAN;
         private List<String> members = new ArrayList<>();
+        private String leaderId;
         private double treasury = 0.0;
+        private double centerX = 0.0;
+        private double centerY = 0.0;
         private Map<String, RelationshipRecord> relationships = new HashMap<>();
         private long foundingTick = 0;
         private long lastActiveTick = 0;
@@ -262,7 +277,10 @@ public class Clan {
             this.name = clan.name;
             this.type = clan.type;
             this.members = new ArrayList<>(clan.members);
+            this.leaderId = clan.leaderId;
             this.treasury = clan.treasury;
+            this.centerX = clan.centerX;
+            this.centerY = clan.centerY;
             this.relationships = new HashMap<>(clan.relationships);
             this.foundingTick = clan.foundingTick;
             this.lastActiveTick = clan.lastActiveTick;
@@ -289,8 +307,23 @@ public class Clan {
             return this;
         }
 
+        public Builder leaderId(String leaderId) {
+            this.leaderId = leaderId;
+            return this;
+        }
+
         public Builder treasury(double treasury) {
             this.treasury = treasury;
+            return this;
+        }
+
+        public Builder centerX(double centerX) {
+            this.centerX = centerX;
+            return this;
+        }
+
+        public Builder centerY(double centerY) {
+            this.centerY = centerY;
             return this;
         }
 
@@ -315,8 +348,8 @@ public class Clan {
         }
 
         public Clan build() {
-            return new Clan(id, name, type, members, treasury, relationships, 
-                          foundingTick, lastActiveTick, schemaVersion);
+            return new Clan(id, name, type, members, leaderId, treasury, centerX, centerY,
+                          relationships, foundingTick, lastActiveTick, schemaVersion);
         }
     }
 }

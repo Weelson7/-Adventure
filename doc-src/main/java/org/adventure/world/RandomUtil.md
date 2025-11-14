@@ -300,7 +300,7 @@ public void differentCoordinatesProduceDifferentValues() {
 ### Documentation
 - [docs/world_generation.md](../../../../../docs/world_generation.md) — Noise usage in terrain generation
 - [docs/design_decisions.md](../../../../../docs/design_decisions.md) — RNG design rationale
-- [BUILD.md](../../../../../BUILD.md) — Determinism testing strategy
+- [BUILD_PHASE1.md](../../../../../BUILD_PHASE1.md) — Determinism testing strategy
 
 ---
 

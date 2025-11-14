@@ -267,7 +267,7 @@ mvn exec:java -Dexec.args="--seed 999 --out test.json"
 - `org.adventure.WorldGenTest` — Determinism validation tests (doc: [../../test/java/org/adventure/WorldGenTest.md](../../../test/java/org/adventure/WorldGenTest.md))
 
 ### Documentation
-- [BUILD.md](../../../../../BUILD.md) — Build guide with CLI examples
+- [BUILD_PHASE1.md](../../../../../BUILD_PHASE1.md) — Build guide with CLI examples
 - [docs/world_generation.md](../../../../../docs/world_generation.md) — World generation design
 - [docs/testing_plan.md](../../../../../docs/testing_plan.md) — Determinism test strategy
 

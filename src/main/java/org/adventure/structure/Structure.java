@@ -32,6 +32,7 @@ public final class Structure {
     private final int createdAtTick;
     private int lastUpdatedTick;
     private final int schemaVersion;
+    private EntranceSide entrance;
     
     @JsonCreator
     public Structure(
@@ -47,7 +48,8 @@ public final class Structure {
             @JsonProperty("permissions") Map<AccessRole, AccessLevel> permissions,
             @JsonProperty("createdAtTick") int createdAtTick,
             @JsonProperty("lastUpdatedTick") int lastUpdatedTick,
-            @JsonProperty("schemaVersion") int schemaVersion) {
+            @JsonProperty("schemaVersion") int schemaVersion,
+            @JsonProperty("entrance") EntranceSide entrance) {
         if (id == null || id.isEmpty()) {
             throw new IllegalArgumentException("Structure ID cannot be null or empty");
         }
@@ -80,6 +82,7 @@ public final class Structure {
         this.createdAtTick = createdAtTick;
         this.lastUpdatedTick = lastUpdatedTick;
         this.schemaVersion = schemaVersion;
+        this.entrance = entrance != null ? entrance : EntranceSide.SOUTH;
         
         // Ensure owner always has FULL access
         if (this.ownerId != null && !this.ownerId.isEmpty()) {
@@ -104,6 +107,7 @@ public final class Structure {
         private int createdAtTick = 0;
         private int lastUpdatedTick = 0;
         private int schemaVersion = 1;
+        private EntranceSide entrance = EntranceSide.SOUTH;
         
         public Builder id(String id) {
             this.id = id;
@@ -185,10 +189,15 @@ public final class Structure {
             return this;
         }
         
+        public Builder entrance(EntranceSide entrance) {
+            this.entrance = entrance;
+            return this;
+        }
+        
         public Structure build() {
             return new Structure(id, type, ownerId, ownerType, locationTileId,
                                health, maxHealth, rooms, upgrades, permissions,
-                               createdAtTick, lastUpdatedTick, schemaVersion);
+                               createdAtTick, lastUpdatedTick, schemaVersion, entrance);
         }
     }
     
@@ -243,6 +252,14 @@ public final class Structure {
     
     public int getSchemaVersion() {
         return schemaVersion;
+    }
+    
+    public EntranceSide getEntrance() {
+        return entrance;
+    }
+    
+    public void setEntrance(EntranceSide entrance) {
+        this.entrance = entrance != null ? entrance : EntranceSide.SOUTH;
     }
     
     /**

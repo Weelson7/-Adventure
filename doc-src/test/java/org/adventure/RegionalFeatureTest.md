@@ -592,7 +592,7 @@ for (RegionalFeature feature : features) {
 
 ### Design Documents
 - [docs/world_generation.md](../../../../../../docs/world_generation.md) — Feature design
-- [BUILD.md](../../../../../../BUILD.md) — Phase 1.1 deliverables
+- [BUILD_PHASE1.md](../../../../../../BUILD_PHASE1.md) — Phase 1.1 deliverables
 
 ### Other Test Documentation
 - [PlateTest.md](PlateTest.md) — Tectonic plate tests

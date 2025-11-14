@@ -10,10 +10,12 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\Conflic
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\ItemTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\CharacterTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\StoryGeneratorTest.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\world\WorldGenDeterminismTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\EventPropagationTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\BiomeTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\RegionTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\EventTest.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\npc\NPCGeneratorTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\StoryTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\AuthTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\RegionSimulatorTest.java
@@ -22,8 +24,12 @@ C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\SkillTe
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\ValidationTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\NPCTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\PersistenceTest.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\VillageTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\ClanTest.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\EntranceSideTest.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\npc\NamedNPCTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\SaturationManagerTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\StructureTest.java
+C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\RoadTileTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\ResourceNodeTest.java
 C:\Users\weel-\Desktop\!Adventure\!Adventure\src\test\java\org\adventure\DiplomacyTest.java

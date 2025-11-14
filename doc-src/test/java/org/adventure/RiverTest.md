@@ -536,7 +536,7 @@ target/site/surefire-report.html
 
 ### Design Documents
 - [docs/world_generation.md](../../../../../../docs/world_generation.md) — River algorithm design
-- [BUILD.md](../../../../../../BUILD.md) — Phase 1.1 quality gates
+- [BUILD_PHASE1.md](../../../../../../BUILD_PHASE1.md) — Phase 1.1 quality gates
 
 ### Other Test Documentation
 - [PlateTest.md](PlateTest.md) — Tectonic plate tests

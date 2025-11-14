@@ -3,7 +3,7 @@
 ## Purpose
 This project now has **FIVE comprehensive build guides** that work together to cover all aspects of development:
 
-## 1. BUILD.md — Phase 1.1-1.10 Backend Systems (100% COMPLETE ✅)
+## 1. BUILD_PHASE1.md — Phase 1.1-1.10 Backend Systems (100% COMPLETE ✅)
 **Focus:** Core backend infrastructure and foundational systems  
 **Status:** ✅ 100% Complete (all 10 sub-phases done)  
 **Audience:** Backend developers, systems architects
@@ -146,7 +146,7 @@ This project now has **FIVE comprehensive build guides** that work together to c
 ## Development Flow
 
 ### Typical Development Path:
-1. **Phase 1.1-1.10 (BUILD.md)** — Build backend systems ✅ COMPLETE
+1. **Phase 1.1-1.10 (BUILD_PHASE1.md)** — Build backend systems ✅ COMPLETE
 2. **Phase 1.11.x (BUILD_PHASE1.11.x.md)** — Core gameplay systems ⏳ CRITICAL (Weeks 1-4)
 3. **Gameplay (BUILD-GAMEPLAY.md)** — Make it playable ⏳ CRITICAL (Weeks 1-4, parallel)
 4. **Phase 2.10.x (BUILD_PHASE2.10.x.md)** — Operations & events ⏳ POST-MVP (Weeks 5-8)
@@ -182,7 +182,7 @@ This project now has **FIVE comprehensive build guides** that work together to c
 
 ## When to Use Each Guide
 
-### Use BUILD.md When:
+### Use BUILD_PHASE1.md When:
 - Implementing core backend systems (worldgen, simulation, persistence)
 - Working on world generation, characters, items, clans
 - Setting up deployment infrastructure
@@ -222,7 +222,7 @@ This project now has **FIVE comprehensive build guides** that work together to c
 
 ### Documentation Hierarchy:
 ```
-BUILD.md (Phase 1.1-1.10)       ← Backend foundation ✅ COMPLETE
+BUILD_PHASE1.md (Phase 1.1-1.10)       ← Backend foundation ✅ COMPLETE
 ├─ Phase 1.1-1.10 complete
 └─ 534 tests, 70%+ coverage
 
@@ -248,14 +248,14 @@ BUILD_PHASE2.md (Phase 2)       ← Advanced systems ⭐ POST-MVP
 ```
 
 ### File Locations:
-- `BUILD.md` — Root directory (Phase 1.1-1.10 complete)
+- `BUILD_PHASE1.md` — Root directory (Phase 1.1-1.10 complete)
 - `BUILD_PHASE1.11.x.md` — Root directory (Core Gameplay Systems)
 - `BUILD-GAMEPLAY.md` — Root directory (Player-Facing UI)
 - `BUILD_PHASE2.10.x.md` — Root directory (Operations & Events)
 - `BUILD_PHASE2.md` — Root directory (Advanced Systems)
 - `MISSING_FEATURES_DISTRIBUTION.md` — Root directory (Feature organization rationale)
 - All reference `docs/` for design specs
-- All reference `BUILD.md` for Phase 1.1-1.10 foundations
+- All reference `BUILD_PHASE1.md` for Phase 1.1-1.10 foundations
 
 ## Important Notes for Copilot
 
@@ -274,7 +274,7 @@ BUILD_PHASE2.md (Phase 2)       ← Advanced systems ⭐ POST-MVP
 - **"What should I build next?"** → Point to BUILD_PHASE1.11.x Phase 1.11.1 (Progression) AND BUILD-GAMEPLAY.md Phase G.1 (Core Loop UI)
 - **"How do I make the game playable?"** → Both BUILD_PHASE1.11.x (backend systems) and BUILD-GAMEPLAY.md (UI)
 - **"When do we add magic system?"** → BUILD_PHASE2.md Phase 2.1 (after MVP playable)
-- **"How's the backend?"** → BUILD.md Phase 1.1-1.10 (100% complete), Phase 1.11.x (0% complete, critical)
+- **"How's the backend?"** → BUILD_PHASE1.md Phase 1.1-1.10 (100% complete), Phase 1.11.x (0% complete, critical)
 - **"What UI options do we have?"** → BUILD-GAMEPLAY.md interface options (web client chosen)
 - **"What about admin tools?"** → BUILD_PHASE2.10.x.md Phase 2.10.1 (post-MVP)
 - **"How do we organize missing features?"** → See MISSING_FEATURES_DISTRIBUTION.md

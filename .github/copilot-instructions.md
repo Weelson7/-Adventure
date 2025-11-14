@@ -20,9 +20,9 @@
   - `design_decisions.md` — canonical architecture decisions
   - `specs_summary.md` — defaults, formulas, tick rates, event decay, mod sandbox caps
   - `TO_FIX.md` — implementation tracker (42 items complete ✅)
-  - `BUILD.md` — comprehensive Phase 1 build guide, phases, quality gates, commands
+  - `BUILD_PHASE1.md` — comprehensive Phase 1 build guide, phases, quality gates, commands
 - **Build Guides:**
-  - `BUILD.md` — **Phase 1 (MVP)** backend systems guide (100% complete ✅)
+  - `BUILD_PHASE1.md` — **Phase 1 (MVP)** backend systems guide (100% complete ✅)
   - `BUILD-GAMEPLAY.md` — **Gameplay & UI** development guide (0% complete, next focus)
   - `BUILD_PHASE2.md` — **Phase 2** advanced systems guide (0% complete, post-MVP)
   - `.github/copilot-instructions-build-guides.md` — **Build guides overview** (read this!)
@@ -39,7 +39,7 @@
 
 ## Developer Workflow
 1. **Pick a task:**
-   - **For Phase 1 (backend):** See `BUILD.md` (100% complete ✅)
+   - **For Phase 1 (backend):** See `BUILD_PHASE1.md` (100% complete ✅)
    - **For Gameplay/UI:** See `BUILD-GAMEPLAY.md` (next focus, 0% complete)
    - **For Phase 2 (advanced):** See `BUILD_PHASE2.md` (post-MVP, 0% complete)
    - **Quick overview:** Read `.github/copilot-instructions-build-guides.md`
@@ -50,7 +50,7 @@
    - Coverage: 70%+ for core, 85%+ for persistence/critical logic
    - All tests must pass before PR: `.\maven\mvn\bin\mvn.cmd test`
 5. **Documentation:** Update `docs/design_decisions.md` for design changes, link affected files
-6. **Quality gates:** See appropriate build guide (`BUILD.md`, `BUILD-GAMEPLAY.md`, or `BUILD_PHASE2.md`) for phase-specific gates
+6. **Quality gates:** See appropriate build guide (`BUILD_PHASE1.md`, `BUILD-GAMEPLAY.md`, or `BUILD_PHASE2.md`) for phase-specific gates
 
 ## Build & Run Commands
 ```powershell
@@ -126,7 +126,7 @@ java -cp target\adventure-0.1.0-SNAPSHOT.jar org.adventure.Game --interactive
 ## Important Gotchas
 - **`doc-src/` is for documentation only** — it mirrors `src/` structure with markdown files, not code
 - **Three build guides, different purposes:**
-  - `BUILD.md` = Phase 1 backend (100% complete ✅)
+  - `BUILD_PHASE1.md` = Phase 1 backend (100% complete ✅)
   - `BUILD-GAMEPLAY.md` = Gameplay/UI (0% complete, NEXT FOCUS)
   - `BUILD_PHASE2.md` = Phase 2 advanced systems (0% complete, post-MVP)
 - **Game has complete backend but NO UI yet** — See BUILD-GAMEPLAY.md for the gap
@@ -139,7 +139,7 @@ java -cp target\adventure-0.1.0-SNAPSHOT.jar org.adventure.Game --interactive
 ---
 
 **For detailed phase information, quality gates, and troubleshooting:**
-- **Phase 1 (backend):** See `BUILD.md` — 100% complete ✅
+- **Phase 1 (backend):** See `BUILD_PHASE1.md` — 100% complete ✅
 - **Gameplay/UI:** See `BUILD-GAMEPLAY.md` — 0% complete, next focus
 - **Phase 2 (advanced):** See `BUILD_PHASE2.md` — 0% complete, post-MVP
 - **Build guides overview:** See `.github/copilot-instructions-build-guides.md`

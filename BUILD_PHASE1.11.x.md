@@ -1116,7 +1116,7 @@ src/test/java/org/adventure/
   - [Persistence & Versioning](docs/persistence_versioning.md)
 
 - **Build Guides:**
-  - [Main Build Guide](BUILD.md) — Phase 1.1-1.10 complete
+  - [Main Build Guide](BUILD_PHASE1.md) — Phase 1.1-1.10 complete
   - [Phase 1.10.x Guide](BUILD_PHASE1.10.x.md) — Living World systems
   - [Gameplay Build Guide](BUILD-GAMEPLAY.md) — UI development (next after this)
   - [Phase 2 Build Guide](BUILD_PHASE2.md) — Advanced systems (post-MVP)

@@ -99,7 +99,7 @@ assertEquals(v1.getValue(), restored.getValue());
 - **Implementation**: `src/main/java/org/adventure/persistence/`
 - **Documentation**: `doc-src/main/java/org/adventure/persistence/`
 - **Phase Summary**: `archive/PHASE_1.8_SUMMARY.md`
-- **Build Guide**: `BUILD.md` → Phase 1.8
+- **Build Guide**: `BUILD_PHASE1.md` → Phase 1.8
 
 ---
 

@@ -7,11 +7,14 @@ package org.adventure.world;
 public enum Biome {
     // Water biomes
     OCEAN("Ocean", 0.0, 0.15, -20, 30, 1.0, 0.6),
+    DEEP_OCEAN("Deep Ocean", 0.0, 0.1, -20, 15, 1.0, 0.4),
     LAKE("Lake", 0.15, 0.2, -10, 25, 0.8, 0.7),
     
     // Cold biomes
     TUNDRA("Tundra", 0.0, 1.0, -10, 5, 0.3, 0.2),
     TAIGA("Taiga", 0.2, 0.7, 0, 10, 0.5, 0.6),
+    ICE("Ice", 0.0, 0.3, -40, -5, 0.1, 0.1),
+    GLACIER("Glacier", 0.5, 1.0, -30, 0, 0.3, 0.2),
     
     // Temperate biomes
     GRASSLAND("Grassland", 0.2, 0.7, 5, 22, 0.4, 0.9),
@@ -24,10 +27,15 @@ public enum Biome {
     
     // Hot/wet biomes
     JUNGLE("Jungle", 0.2, 0.5, 22, 35, 0.8, 0.9),
+    RAINFOREST("Rainforest", 0.2, 0.5, 20, 32, 0.9, 1.0),
     
     // Mountain biomes
     HILLS("Hills", 0.6, 0.8, 0, 20, 0.4, 0.6),
     MOUNTAIN("Mountain", 0.8, 1.0, -10, 10, 0.5, 0.5),
+    HIGHLAND("Highland", 0.5, 0.8, -5, 15, 0.5, 0.6),
+    
+    // Arid/rocky biomes
+    BADLANDS("Badlands", 0.3, 0.6, 25, 40, 0.2, 0.3),
     
     // Special biomes
     VOLCANIC("Volcanic", 0.6, 0.9, 25, 50, 0.6, 1.2),
@@ -143,7 +151,7 @@ public enum Biome {
      * Check if biome is water-based.
      */
     public boolean isWater() {
-        return this == OCEAN || this == LAKE;
+        return this == OCEAN || this == DEEP_OCEAN || this == LAKE;
     }
 
     /**

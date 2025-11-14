@@ -556,7 +556,7 @@ saveManager.save(world, "world.json"); // Auto-syncs to S3
 - Design: `docs/persistence_versioning.md`
 - Phase Summary: `archive/PHASE_1.8_SUMMARY.md`
 - Tests: `src/test/java/org/adventure/PersistenceTest.java`
-- Build Guide: `BUILD.md` → Phase 1.8
+- Build Guide: `BUILD_PHASE1.md` → Phase 1.8
 
 ---
 

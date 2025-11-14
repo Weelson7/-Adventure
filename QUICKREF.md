@@ -72,7 +72,7 @@ docker run -d -p 8080:8080 \              # Run container
 
 | File | Purpose |
 |------|---------|
-| `BUILD.md` | Build guide, phases, quality gates |
+| `BUILD_PHASE1.md` | Build guide, phases, quality gates |
 | `deployment/DEPLOYMENT.md` | Deployment guide (all platforms) |
 | `docs/design_decisions.md` | Canonical architecture decisions |
 | `docs/specs_summary.md` | Defaults, formulas, tick rates |
@@ -208,10 +208,10 @@ java -jar target/adventure-0.1.0-SNAPSHOT.jar --server --port 9090
 ## Support
 
 - **Documentation:** `docs/` directory
-- **Build Guide:** `BUILD.md`
+- **Build Guide:** `BUILD_PHASE1.md`
 - **Deployment Guide:** `deployment/DEPLOYMENT.md`
 - **GitHub Issues:** (link to repository issues)
 
 ---
 
-**For detailed information, see BUILD.md and deployment/DEPLOYMENT.md**
+**For detailed information, see BUILD_PHASE1.md and deployment/DEPLOYMENT.md**

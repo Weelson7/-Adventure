@@ -39,4 +39,4 @@ See **`DEPLOYMENT.md`** for complete deployment instructions including:
 
 ---
 
-**Back to root:** [Main README](../README.md) | [Build Guide](../BUILD.md)
+**Back to root:** [Main README](../README.md) | [Build Guide](../BUILD_PHASE1.md)

@@ -633,7 +633,7 @@ docker system df
    java -XX:StartFlightRecording=duration=60s,filename=profile.jfr -jar target/adventure-0.1.0-SNAPSHOT.jar --width 512 --height 512 --seed 42
    ```
 2. Analyze `profile.jfr` with JDK Mission Control or VisualVM
-3. Optimize hot paths (see `BUILD.md` → Performance Benchmarks)
+3. Optimize hot paths (see `BUILD_PHASE1.md` → Performance Benchmarks)
 
 #### "Server lag with 10+ active regions"
 **Cause:** Too many active regions or inefficient tick processing.

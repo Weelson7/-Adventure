@@ -1050,7 +1050,7 @@ client/admin/ (NEW - Admin Dashboard Web UI)
   - [Modding & Security](docs/modding_and_security.md) — Admin permissions
 
 - **Build Guides:**
-  - [Main Build Guide](BUILD.md) — Phase 1 complete (backend)
+  - [Main Build Guide](BUILD_PHASE1.md) — Phase 1 complete (backend)
   - [Phase 1.11.x Guide](BUILD_PHASE1.11.x.md) — Core gameplay systems
   - [Gameplay Build Guide](BUILD-GAMEPLAY.md) — UI development
   - [Phase 2 Build Guide](BUILD_PHASE2.md) — Magic, diplomacy (other Phase 2 systems)

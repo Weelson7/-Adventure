@@ -11,7 +11,7 @@
 This document is the **dedicated guide** for Phase 2 development of !Adventure. Phase 1 (MVP) established the foundation; Phase 2 adds **depth, complexity, and polish** to create a truly immersive experience.
 
 ### Quick Links
-- [Main Build Guide](BUILD.md) — Phase 1 (MVP) complete reference
+- [Main Build Guide](BUILD_PHASE1.md) — Phase 1 (MVP) complete reference
 - [Gameplay Build Guide](BUILD-GAMEPLAY.md) — UI and player experience development
 - [Grand Plan](docs/grand_plan.md) — Strategic roadmap and feature prioritization
 - [Architecture Design](docs/architecture_design.md) — Technical architecture and system contracts

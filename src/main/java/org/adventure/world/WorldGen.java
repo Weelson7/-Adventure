@@ -1,6 +1,17 @@
 package org.adventure.world;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.adventure.npc.NamedNPC;
+import org.adventure.prophecy.Prophecy;
+import org.adventure.prophecy.ProphecyGenerator;
+import org.adventure.quest.Quest;
+import org.adventure.quest.QuestGenerator;
+import org.adventure.settlement.Settlement;
+import org.adventure.settlement.SettlementGenerator;
+import org.adventure.society.Clan;
+import org.adventure.story.Story;
+import org.adventure.story.StoryGenerator;
+import org.adventure.structure.Structure;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +32,13 @@ public class WorldGen {
     private java.util.List<Plate> plates;
     private java.util.List<River> rivers;
     private java.util.List<RegionalFeature> features;
+    private java.util.List<Story> stories;
+    private java.util.List<Clan> clans;
+    private java.util.List<Settlement> settlements;
+    private java.util.List<Structure> structures;
+    private java.util.List<NamedNPC> npcs;
+    private java.util.List<Prophecy> prophecies;
+    private java.util.List<Quest> quests;
 
     public WorldGen(int width, int height) {
         this.width = width;
@@ -33,6 +51,13 @@ public class WorldGen {
         this.plates = new java.util.ArrayList<>();
         this.rivers = new java.util.ArrayList<>();
         this.features = new java.util.ArrayList<>();
+        this.stories = new java.util.ArrayList<>();
+        this.clans = new java.util.ArrayList<>();
+        this.settlements = new java.util.ArrayList<>();
+        this.structures = new java.util.ArrayList<>();
+        this.npcs = new java.util.ArrayList<>();
+        this.prophecies = new java.util.ArrayList<>();
+        this.quests = new java.util.ArrayList<>();
     }
 
     public void generate(long seed) {
@@ -61,6 +86,24 @@ public class WorldGen {
         
         // Phase 8: Place regional features (volcanoes, magic zones, etc.)
         generateRegionalFeatures(seed);
+        
+        // Phase 9: Generate initial stories
+        generateStories(seed);
+        
+        // Phase 10: Generate initial clans/societies
+        generateClans(seed);
+        
+        // Phase 11: Generate initial settlements (1 per clan)
+        generateSettlements(seed);
+        
+        // Phase 12: Generate Named NPCs for all clans
+        generateNamedNPCs(seed);
+        
+        // Phase 13: Generate prophecies
+        generateProphecies(seed);
+        
+        // Phase 14: Generate feature-based quests
+        generateQuests(seed);
     }
 
     private void generatePlates(long seed) {
@@ -316,6 +359,86 @@ public class WorldGen {
 
     public java.util.List<RegionalFeature> getFeatures() {
         return new java.util.ArrayList<>(features);
+    }
+
+    public java.util.List<Story> getStories() {
+        return new java.util.ArrayList<>(stories);
+    }
+
+    public java.util.List<Clan> getClans() {
+        return new java.util.ArrayList<>(clans);
+    }
+
+    public java.util.List<Settlement> getSettlements() {
+        return new java.util.ArrayList<>(settlements);
+    }
+
+    public java.util.List<Structure> getStructures() {
+        return new java.util.ArrayList<>(structures);
+    }
+
+    public java.util.List<NamedNPC> getNPCs() {
+        return new java.util.ArrayList<>(npcs);
+    }
+
+    public java.util.List<Prophecy> getProphecies() {
+        return new java.util.ArrayList<>(prophecies);
+    }
+
+    public java.util.List<Quest> getQuests() {
+        return new java.util.ArrayList<>(quests);
+    }
+
+    // Phase 9: Generate initial stories
+    private void generateStories(long seed) {
+        StoryGenerator generator = new StoryGenerator(seed, width, height);
+        this.stories = generator.generateStories(biomes);
+    }
+
+    // Phase 10: Generate initial clans
+    private void generateClans(long seed) {
+        this.clans = ClanGenerator.generateInitialClans(seed, width, height, biomes);
+    }
+
+    // Phase 11: Generate settlements (1 per clan)
+    private void generateSettlements(long seed) {
+        java.util.Map<String, SettlementGenerator.SettlementWithStructures> settlementMap = 
+            SettlementGenerator.generateInitialSettlements(seed, clans, biomes, width, height);
+        
+        // Extract settlements and structures
+        for (SettlementGenerator.SettlementWithStructures sws : settlementMap.values()) {
+            this.settlements.add(sws.getSettlement());
+            this.structures.addAll(sws.getStructures());
+        }
+    }
+
+    // Phase 12: Generate Named NPCs
+    private void generateNamedNPCs(long seed) {
+        // Build clan -> structures map
+        java.util.Map<String, java.util.List<Structure>> clanStructures = new java.util.HashMap<>();
+        for (Structure structure : structures) {
+            String clanId = structure.getOwnerId();
+            clanStructures.computeIfAbsent(clanId, k -> new java.util.ArrayList<>())
+                .add(structure);
+        }
+        
+        // Generate NPCs
+        this.npcs = ClanGenerator.generateNPCsForClans(
+            clans, 
+            clanStructures, 
+            seed, 
+            0L // currentTick = 0 at worldgen
+        );
+    }
+
+    // Phase 13: Generate prophecies
+    private void generateProphecies(long seed) {
+        this.prophecies = ProphecyGenerator.generateProphecies(seed, features, biomes);
+    }
+
+    // Phase 14: Generate quests
+    private void generateQuests(long seed) {
+        this.quests = QuestGenerator.generateFeatureQuests(seed, features, stories);
     }
 
     public static class ChunkData {

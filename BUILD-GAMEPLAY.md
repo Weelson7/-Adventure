@@ -8,13 +8,13 @@
 
 ## Overview
 
-This document is the **dedicated guide** for building the gameplay loop and user interface for !Adventure. While BUILD.md covers backend systems, this guide focuses on making the game **actually playable** with rich UI, intuitive controls, and engaging player experiences.
+This document is the **dedicated guide** for building the gameplay loop and user interface for !Adventure. While BUILD_PHASE1.md covers backend systems, this guide focuses on making the game **actually playable** with rich UI, intuitive controls, and engaging player experiences.
 
 ### Quick Links
 - [Grand Plan & MVP Matrix](docs/grand_plan.md) — Strategic roadmap and feature prioritization
 - [Architecture Design](docs/architecture_design.md) — Technical architecture and system contracts
 - [Testing Plan](docs/testing_plan.md) — Test framework, coverage goals, and determinism checks
-- [Main Build Guide](BUILD.md) — Backend systems development (Phase 1 complete)
+- [Main Build Guide](BUILD_PHASE1.md) — Backend systems development (Phase 1 complete)
 - [Phase 2 Build Guide](BUILD_PHASE2.md) — Advanced systems development
 
 ---

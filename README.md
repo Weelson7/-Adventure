@@ -7,7 +7,7 @@ This README gives a concise orientation for contributors and operators: where to
 ## Quick links
 
 - Docs: `docs/` (detailed design documents and decisions)
-- Build Guide: `BUILD.md` (phases, quality gates, build commands)
+- Build Guide: `BUILD_PHASE1.md` (phases, quality gates, build commands)
 - Deployment Guide: `deployment/DEPLOYMENT.md` (Windows, Linux, Docker, cloud platforms)
 - High-level tracker: `docs/TO_FIX.md` (implementation tracker)
 - Canonical decisions: `docs/design_decisions.md`
@@ -92,7 +92,7 @@ See **`deployment/DEPLOYMENT.md`** for comprehensive deployment instructions inc
 ## Documentation structure (high-level)
 
 ### Build Guides
-- **`BUILD.md`** — Phase 1 (MVP) comprehensive build guide with all 10 sub-phases
+- **`BUILD_PHASE1.md`** — Phase 1 (MVP) comprehensive build guide with all 10 sub-phases
 - **`BUILD-GAMEPLAY.md`** — Gameplay loop and UI development guide (character creation, combat, inventory, quests)
 - **`BUILD_PHASE2.md`** — Phase 2 advanced systems guide (magic, diplomacy, economy, AI, modding)
 - **`QUICKREF.md`** — Quick reference card for commands and workflows

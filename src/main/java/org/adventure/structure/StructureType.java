@@ -24,6 +24,8 @@ public enum StructureType {
     MARKET("Commercial", "Large trading area with multiple vendors"),
     WAREHOUSE("Commercial", "Storage facility for goods"),
     INN("Commercial", "Lodging and dining establishment"),
+    DOCK("Commercial", "Waterfront structure for loading/unloading goods"),
+    FISHING_HUT("Commercial", "Small structure for fishing operations"),
     
     // Magical Structures
     WIZARD_TOWER("Magical", "Tall spire for magical study and practice"),

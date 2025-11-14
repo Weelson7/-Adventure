@@ -480,7 +480,7 @@ if (playerTile.hasFeature(FeatureType.SUBMERGED_CITY)) {
 
 ### Documentation
 - [docs/world_generation.md](../../../../../docs/world_generation.md) — Feature placement design
-- [BUILD.md](../../../../../BUILD.md) — Phase 1.1 deliverables
+- [BUILD_PHASE1.md](../../../../../BUILD_PHASE1.md) — Phase 1.1 deliverables
 
 ---
 
