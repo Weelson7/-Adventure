@@ -9,6 +9,9 @@ WORKDIR /build
 COPY maven/ ./maven/
 COPY pom.xml .
 
+# Make Maven wrapper executable
+RUN chmod +x ./maven/mvn/bin/mvn
+
 # Download dependencies (cached layer if pom.xml unchanged)
 RUN ./maven/mvn/bin/mvn dependency:go-offline -B
 
