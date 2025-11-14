@@ -68,16 +68,48 @@ jobs:
           path: target/surefire-reports/
           retention-days: 30
 
+      - name: Report coverage statistics
+        if: runner.os == 'Linux'
+        run: |
+          echo "=== JaCoCo Coverage Report ==="
+          if [ -f target/site/jacoco/jacoco.csv ]; then
+            # Parse CSV for accurate coverage
+            tail -n 1 target/site/jacoco/jacoco.csv | awk -F',' '{
+              missed_instructions=$4; covered_instructions=$5;
+              missed_branches=$6; covered_branches=$7;
+              total_instructions=missed_instructions+covered_instructions;
+              total_branches=missed_branches+covered_branches;
+              if (total_instructions > 0) {
+                instruction_coverage=(covered_instructions*100)/total_instructions;
+                printf "Instruction Coverage: %.1f%% (%d/%d)\n", instruction_coverage, covered_instructions, total_instructions;
+              }
+              if (total_branches > 0) {
+                branch_coverage=(covered_branches*100)/total_branches;
+                printf "Branch Coverage: %.1f%% (%d/%d)\n", branch_coverage, covered_branches, total_branches;
+              }
+            }'
+          else
+            echo "WARNING: jacoco.csv not found"
+          fi
+
       - name: Check coverage threshold
         if: runner.os == 'Linux'
         run: |
-          coverage=$(grep -oP 'Total.*?([0-9.]+)%' target/site/jacoco/index.html | grep -oP '[0-9.]+' | head -1 || echo "0")
-          echo "Coverage: $coverage%"
-          if (( $(echo "$coverage < 70" | bc -l) )); then
-            echo "WARNING: Coverage is below 70% threshold (current: $coverage%)"
-            echo "Goal: 70%+ for core, 85%+ for critical logic"
+          if [ -f target/site/jacoco/jacoco.csv ]; then
+            # Extract instruction coverage from CSV (most accurate)
+            coverage=$(tail -n 1 target/site/jacoco/jacoco.csv | awk -F',' '{
+              missed=$4; covered=$5; total=missed+covered;
+              if (total > 0) printf "%.0f", (covered*100)/total; else printf "0";
+            }')
+            echo "Coverage: $coverage%"
+            if [ "$coverage" -lt 70 ]; then
+              echo "WARNING: Coverage is below 70% threshold (current: $coverage%)"
+              echo "Goal: 70%+ for core, 85%+ for critical logic"
+            else
+              echo "✓ Coverage meets threshold!"
+            fi
           else
-            echo "Coverage meets threshold!"
+            echo "WARNING: Coverage report not found"
           fi
 
   nightly-integration-tests:
@@ -143,6 +175,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./deployment/Dockerfile
           push: false
           tags: adventure:${{ github.sha }},adventure:latest
           cache-from: type=gha
