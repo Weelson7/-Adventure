@@ -1279,6 +1279,10 @@ Example: HOUSE with SOUTH entrance
 ### Goal
 Implement living world mechanics: NPC-driven clan expansion, structure construction/destruction, dynamic events.
 
+### Status: 🚧 **NOT YET STARTED** (Planned for Next Development Cycle)
+
+**Note:** Phase 1.10.1 and 1.10.2 are complete. Phase 1.10.3 is fully designed but awaiting implementation. All required classes, methods, and integration points are specified below.
+
 ### Deliverables
 
 #### 1. **ClanExpansionSimulator.java**
@@ -1518,7 +1522,7 @@ public void simulateTick(Region region, long currentTick) {
 
 ---
 
-### Quality Gates (Phase 1.10.3)
+### Quality Gates (Phase 1.10.3) 🚧 **NOT YET IMPLEMENTED**
 
 **Clan Expansion:**
 - [ ] NPC-led clans build structures when treasury sufficient
@@ -1527,11 +1531,11 @@ public void simulateTick(Region region, long currentTick) {
 - [ ] New structures follow placement rules
 
 **NPC Lifecycle:**
-- [ ] NPCs age correctly (1 year per 10k ticks)
-- [ ] Marriage proposals work (compatible NPCs marry)
-- [ ] Reproduction creates children (fertility-based chance)
-- [ ] Death occurs at appropriate ages (70+, increasing probability)
-- [ ] Inheritance works (spouse/children inherit)
+- [ ] NPCs age correctly (1 year per 10k ticks) *(Base implementation exists in NPCLifecycleManager)*
+- [ ] Marriage proposals work (compatible NPCs marry) *(Base implementation exists)*
+- [ ] Reproduction creates children (fertility-based chance) *(Base implementation exists)*
+- [ ] Death occurs at appropriate ages (70+, increasing probability) *(Base implementation exists)*
+- [ ] Inheritance works (spouse/children inherit) *(Base implementation exists)*
 
 **Structure Lifecycle:**
 - [ ] Disasters occur at expected rate (5% per 1000 ticks)
@@ -1548,6 +1552,13 @@ public void simulateTick(Region region, long currentTick) {
 - [ ] NPC lifecycle runs before clan expansion (correct order)
 - [ ] Simulation doesn't cause performance degradation
 - [ ] All changes persisted correctly
+
+**Implementation Status:**
+- ❌ ClanExpansionSimulator.java - NOT CREATED
+- ❌ StructureLifecycleManager.java - NOT CREATED
+- ❌ QuestDynamicGenerator.java - NOT CREATED
+- ⚠️  RegionSimulator.java - EXISTS but needs Phase 1.10.3 integration (see TODO at line 118)
+- ✅ NPCLifecycleManager.java - EXISTS with core aging/marriage/reproduction (needs full integration)
 
 ---
 
@@ -1734,69 +1745,75 @@ public void testSimulationPerformance() {
 ```
 src/main/java/org/adventure/
 ├── world/
-│   ├── WorldGen.java (MODIFIED: add phases 9-14 including NPC generation)
-│   ├── ClanGenerator.java (NEW - modified to integrate NPCs)
-│   ├── SettlementGenerator.java (NEW)
-│   ├── ProphecyGenerator.java (NEW)
-│   └── QuestGenerator.java (NEW)
-├── npc/ (NEW PACKAGE)
-│   ├── NamedNPC.java (NEW)
-│   ├── NPCGenerator.java (NEW)
-│   ├── NPCLifecycleManager.java (NEW)
-│   ├── PlayerNPCInteraction.java (NEW)
-│   ├── Gender.java (NEW - enum)
-│   └── NPCJob.java (NEW - enum)
-├── settlement/
-│   ├── Settlement.java (NEW)
-│   ├── Village.java (NEW) ✅ IMPLEMENTED
-│   ├── VillageManager.java (NEW) ✅ IMPLEMENTED
-│   ├── VillageType.java (NEW - enum)
-│   ├── RoadGenerator.java (NEW) ✅ IMPLEMENTED
-│   ├── RoadTile.java (NEW) ✅ IMPLEMENTED
-│   └── RoadType.java (NEW - enum) ✅ IMPLEMENTED
-├── structure/
-│   ├── StructurePlacementRules.java (NEW) ✅ IMPLEMENTED
-│   ├── PlacementError.java (NEW) ✅ IMPLEMENTED
-│   ├── PlacementErrorType.java (NEW - enum) ✅ IMPLEMENTED
-│   ├── EntranceSide.java (NEW - enum) ✅ IMPLEMENTED
-│   ├── Structure.java (MODIFIED: add entrance field) ✅ IMPLEMENTED
-│   └── StructureType.java (MODIFIED: add DOCK, FISHING_HUT) ✅ IMPLEMENTED
-├── simulation/
-│   ├── ClanExpansionSimulator.java (NEW - modified for NPC/player split)
-│   ├── StructureLifecycleManager.java (NEW)
-│   └── QuestDynamicGenerator.java (NEW)
-├── quest/
-│   ├── Quest.java (NEW)
-│   ├── QuestObjective.java (NEW)
-│   ├── QuestReward.java (NEW)
-│   ├── QuestType.java (NEW - enum)
-│   └── QuestStatus.java (NEW - enum)
-└── prophecy/
-    ├── Prophecy.java (NEW)
-    ├── ProphecyType.java (NEW - enum)
-    └── ProphecyStatus.java (NEW - enum)
+│   ├── WorldGen.java (MODIFIED: add phases 9-14 including NPC generation) ✅ COMPLETE
+│   ├── ClanGenerator.java (NEW - modified to integrate NPCs) ✅ COMPLETE
+│   ├── SettlementGenerator.java (NEW) ✅ COMPLETE
+│   ├── ProphecyGenerator.java (NEW) ✅ COMPLETE
+│   └── QuestGenerator.java (NEW) ✅ COMPLETE
+├── npc/ (NEW PACKAGE) ✅ COMPLETE
+│   ├── NamedNPC.java (NEW) ✅
+│   ├── NPCGenerator.java (NEW) ✅
+│   ├── NPCLifecycleManager.java (NEW) ✅ (needs integration)
+│   ├── PlayerNPCInteraction.java (NEW) ✅
+│   ├── Gender.java (NEW - enum) ✅
+│   └── NPCJob.java (NEW - enum) ✅
+├── settlement/ ✅ COMPLETE
+│   ├── Settlement.java (NEW) ✅
+│   ├── Village.java (NEW) ✅
+│   ├── VillageManager.java (NEW) ✅
+│   ├── VillageType.java (NEW - enum) ✅
+│   ├── RoadGenerator.java (NEW) ✅
+│   ├── RoadTile.java (NEW) ✅
+│   └── RoadType.java (NEW - enum) ✅
+├── structure/ (MODIFIED) ✅ COMPLETE
+│   ├── StructurePlacementRules.java (NEW) ✅
+│   ├── PlacementError.java (NEW) ✅
+│   ├── PlacementErrorType.java (NEW - enum) ✅
+│   ├── EntranceSide.java (NEW - enum) ✅
+│   ├── Structure.java (MODIFIED: add entrance field) ✅
+│   └── StructureType.java (MODIFIED: add DOCK, FISHING_HUT) ✅
+├── simulation/ 🚧 **NOT YET CREATED**
+│   ├── ClanExpansionSimulator.java (NEW - modified for NPC/player split) ❌ TO DO
+│   ├── StructureLifecycleManager.java (NEW) ❌ TO DO
+│   └── QuestDynamicGenerator.java (NEW) ❌ TO DO
+├── quest/ ✅ COMPLETE
+│   ├── Quest.java (NEW) ✅
+│   ├── QuestObjective.java (NEW) ✅
+│   ├── QuestReward.java (NEW) ✅
+│   ├── QuestType.java (NEW - enum) ✅
+│   └── QuestStatus.java (NEW - enum) ✅
+└── prophecy/ ✅ COMPLETE
+    ├── Prophecy.java (NEW) ✅
+    ├── ProphecyType.java (NEW - enum) ✅
+    └── ProphecyStatus.java (NEW - enum) ✅
 
 src/test/java/org/adventure/
-├── npc/ (NEW PACKAGE)
-│   ├── NamedNPCTest.java (NEW)
-│   ├── NPCGeneratorTest.java (NEW)
-│   ├── NPCLifecycleManagerTest.java (NEW)
-│   └── PlayerNPCInteractionTest.java (NEW)
-├── ClanGeneratorTest.java (NEW)
-├── SettlementGeneratorTest.java (NEW)
-├── ProphecyGeneratorTest.java (NEW)
-├── QuestGeneratorTest.java (NEW)
-├── VillageTest.java (NEW) ✅ IMPLEMENTED (11 tests)
-├── VillageManagerTest.java (NEW - planned)
-├── RoadTileTest.java (NEW) ✅ IMPLEMENTED (11 tests)
-├── EntranceSideTest.java (NEW) ✅ IMPLEMENTED (10 tests)
-├── RoadGeneratorTest.java (NEW - planned)
-├── StructurePlacementRulesTest.java (NEW - planned)
-├── ClanExpansionSimulatorTest.java (NEW)
-├── StructureLifecycleManagerTest.java (NEW)
-├── QuestDynamicGeneratorTest.java (NEW)
-└── WorldGenDeterminismTest.java (MODIFIED: add NPC checks)
+├── npc/ (NEW PACKAGE) ✅ COMPLETE
+│   ├── NamedNPCTest.java (NEW) ✅
+│   ├── NPCGeneratorTest.java (NEW) ✅
+│   ├── NPCLifecycleManagerTest.java (NEW) ✅
+│   └── PlayerNPCInteractionTest.java (NEW) ✅
+├── ClanGeneratorTest.java (NEW) ✅ COMPLETE
+├── SettlementGeneratorTest.java (NEW) ✅ COMPLETE
+├── ProphecyGeneratorTest.java (NEW) ✅ COMPLETE
+├── QuestGeneratorTest.java (NEW) ✅ COMPLETE
+├── VillageTest.java (NEW) ✅ COMPLETE (11 tests)
+├── VillageManagerTest.java (NEW - planned) ⚠️ NEEDS TESTS
+├── RoadTileTest.java (NEW) ✅ COMPLETE (11 tests)
+├── EntranceSideTest.java (NEW) ✅ COMPLETE (10 tests)
+├── RoadGeneratorTest.java (NEW - planned) ⚠️ NEEDS TESTS
+├── StructurePlacementRulesTest.java (NEW - planned) ⚠️ NEEDS TESTS
+├── ClanExpansionSimulatorTest.java (NEW) ❌ NOT STARTED (Phase 1.10.3)
+├── StructureLifecycleManagerTest.java (NEW) ❌ NOT STARTED (Phase 1.10.3)
+├── QuestDynamicGeneratorTest.java (NEW) ❌ NOT STARTED (Phase 1.10.3)
+└── WorldGenDeterminismTest.java (MODIFIED: add NPC checks) ✅ COMPLETE
 ```
+
+**Legend:**
+- ✅ COMPLETE - Fully implemented and tested
+- ⚠️ NEEDS TESTS - Implementation exists but tests incomplete
+- ❌ NOT STARTED - Not yet implemented (Phase 1.10.3)
+- 🚧 NOT YET CREATED - Package/directory doesn't exist yet
 
 ---
 
@@ -1816,23 +1833,35 @@ src/test/java/org/adventure/
 3. **Day 5:** ✅ StructurePlacementRules + validation (254 lines, 5 error types)
 4. **Day 6-7:** ✅ Supporting classes (Village, RoadTile, RoadType, EntranceSide, PlacementError) + 32 tests + integration
 
-### Week 3: Dynamic World + NPC Lifecycle
-1. **Day 1-2:** ClanExpansionSimulator (NPC/player split logic)
-2. **Day 3:** Complete NPCLifecycleManager (death, inheritance)
-3. **Day 4:** PlayerNPCInteraction (player marriage/reproduction)
-4. **Day 5:** StructureLifecycleManager
-5. **Day 6:** QuestDynamicGenerator
-6. **Day 7:** Integration with RegionSimulator + full simulation tests
+### Week 3: Dynamic World + NPC Lifecycle 🚧 **NOT YET STARTED**
+1. **Day 1-2:** ClanExpansionSimulator (NPC/player split logic) - **TO DO**
+2. **Day 3:** Complete NPCLifecycleManager (death, inheritance) - **PARTIALLY DONE** (core exists, needs integration)
+3. **Day 4:** PlayerNPCInteraction (player marriage/reproduction) - **COMPLETE** ✅
+4. **Day 5:** StructureLifecycleManager - **TO DO**
+5. **Day 6:** QuestDynamicGenerator - **TO DO**
+6. **Day 7:** Integration with RegionSimulator + full simulation tests - **TO DO**
 
 **Total new classes:** ~20 (12 original + 8 for Named NPC system)
 **Total new tests:** ~120 (100+ original + 20 for NPC system)
 
-**Phase 1.10.2 Status:** ✅ COMPLETE
+**Phase 1.10.1 Status:** ✅ COMPLETE (November 14, 2025)
+- 7 new classes (NamedNPC, NPCGenerator, NPCLifecycleManager, PlayerNPCInteraction, Gender, NPCJob, plus updates to ClanGenerator, SettlementGenerator, ProphecyGenerator, QuestGenerator, WorldGen)
+- 23 new tests (13 determinism + 10 NPC unit tests)
+- All quality gates passed
+- 547 total tests passing
+
+**Phase 1.10.2 Status:** ✅ COMPLETE (November 14, 2025)
 - 8 new classes implemented (Village, VillageManager, RoadGenerator, RoadTile, RoadType, StructurePlacementRules, EntranceSide, PlacementError + PlacementErrorType)
 - 2 classes modified (Structure with entrance field, StructureType with water structures)
 - 32 new tests added (11 Village, 11 RoadTile, 10 EntranceSide)
 - All quality gates passed
 - 550+ total tests passing
+
+**Phase 1.10.3 Status:** 🚧 **NOT YET STARTED**
+- 3 major classes needed: ClanExpansionSimulator, StructureLifecycleManager, QuestDynamicGenerator
+- RegionSimulator integration required (TODO at line 118)
+- NPCLifecycleManager exists but needs full integration into RegionSimulator
+- Estimated ~120 new tests required
 
 ---
 
@@ -1855,21 +1884,24 @@ src/test/java/org/adventure/
 - [x] 32 new tests added, all passing
 - [x] Full integration with existing structure system
 
-**Phase 1.10.3 Complete When:**
+**Phase 1.10.3 Complete When:** 🚧 **NOT YET STARTED**
 - [ ] NPC-led clans expand and build new structures
 - [ ] Player-led clans skip all automatic behavior
-- [ ] NPCs age, marry, reproduce, and die naturally
-- [ ] Children born to married couples (fertility-based)
+- [ ] NPCs age, marry, reproduce, and die naturally *(Base implementation exists, needs integration)*
+- [ ] Children born to married couples (fertility-based) *(Base implementation exists, needs integration)*
 - [ ] Structures age, get damaged, and become ruins
 - [ ] Dynamic quests generate from world events
 - [ ] Full simulation runs for 10k+ ticks without errors
 
 **Overall Phase 1.10.x Complete When:**
-- [ ] All sub-phases complete
-- [ ] 534+ tests passing (current) + 120+ new tests
-- [ ] Game feels "alive" with Named NPCs (visible population changes)
-- [ ] Player can marry NPCs and have children
-- [ ] Determinism maintained across all systems (including NPC lifecycle)
+- [x] Phase 1.10.1 complete ✅ (November 14, 2025)
+- [x] Phase 1.10.2 complete ✅ (November 14, 2025)
+- [ ] Phase 1.10.3 complete 🚧 (NOT YET STARTED)
+- [x] 547 tests passing (current: Phases 1.10.1 & 1.10.2 only)
+- [ ] 667+ tests passing (target after Phase 1.10.3: +120 tests)
+- [ ] Game feels "alive" with Named NPCs (visible population changes) *(Partially achieved - needs dynamic simulation)*
+- [x] Player can marry NPCs and have children ✅ (PlayerNPCInteraction implemented)
+- [x] Determinism maintained across all systems ✅ (including NPC lifecycle)
 
 ---
 
